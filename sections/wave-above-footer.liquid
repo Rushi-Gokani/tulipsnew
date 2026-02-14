@@ -1,0 +1,100 @@
+{% schema %}
+{
+  "name": "Wave Transition",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "wave_image",
+      "label": "Wave Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wave Transition Section",
+      "category": "Decorative"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="wave-container">
+  <img
+    src="{{ section.settings.wave_image | img_url: '2048x2048' }}"
+    alt="Wave Decorative"
+    class="wave-image"
+  >
+</div>
+
+<style>
+  .wave-container {
+    position: relative;
+    overflow: visible;
+    margin-bottom: 0;
+
+      bottom: -15px;
+
+  }
+
+  .wave-image {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: auto;
+    display: block;
+    z-index: 10;
+  }
+
+  /* ✅ Extra Large Screens: 1400px+ */
+  @media (min-width: 1400px) {
+    .wave-image {
+      top: -70px;
+    }
+     .wave-container {
+      bottom: -4px;
+    }
+  }
+
+  /* ✅ Large Screens: 1200px–1399px */
+  @media (max-width: 1399px) and (min-width: 1200px) {
+    .wave-image {
+      top: -65px;
+    }
+  }
+
+  /* ✅ Medium Screens: 1025px–1199px */
+  @media (max-width: 1199px) and (min-width: 1025px) {
+    .wave-image {
+      top: -50px;
+    }
+
+  }
+
+  /* ✅ Small Screens: 769px–1024px */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .wave-image {
+      top: -40px;
+    }
+    .wave-container {
+      bottom: -2px;
+    }
+  }
+
+  /* ✅ Extra Small Screens: ≤768px */
+  @media (max-width: 765px) {
+    .wave-image {
+      top: -25px;
+    }
+    .wave-container {
+      bottom: 2px;
+    }
+  }
+    @media (max-width: 555px) {
+    .wave-image {
+      top: -16px;
+    }
+    .wave-container {
+      bottom: -2px;
+    }
+  }
+</style>

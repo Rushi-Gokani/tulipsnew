@@ -1,0 +1,311 @@
+{% schema %}
+{
+  "name": "Cotton Quality Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Left Side Image"
+    },
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main Heading",
+      "default": "WE LIVE BY QUALITY !"
+    },
+    {
+      "type": "textarea",
+      "id": "bullet1",
+      "label": "Bullet Point 1",
+      "default": "Indian leader in Hygiene Cotton – exporting products to more than 12 Countries"
+    },
+    {
+      "type": "textarea",
+      "id": "bullet2",
+      "label": "Bullet Point 2",
+      "default": "South Asia’s largest manufacturer of Cotton Buds & Cotton balls"
+    },
+    {
+      "type": "textarea",
+      "id": "bullet3",
+      "label": "Bullet Point 3",
+      "default": "Nominee for ET NOW – Leaders for Tomorrow 2014"
+    },
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Sub Heading",
+      "default": "A COTTON BUD SHOULD FEEL NOTHING BUT… COTTON"
+    },
+    {
+      "type": "text",
+      "id": "info_heading1",
+      "label": "Info Heading 1",
+      "default": "We use softest possible fibre of Pharmacopoeia grade Cotton"
+    },
+    {
+      "type": "textarea",
+      "id": "info_text1",
+      "label": "Info Text 1",
+      "default": "Cotton IP, made up of Comber, is used... which gives softest feel."
+    },
+    {
+      "type": "text",
+      "id": "info_heading2",
+      "label": "Info Heading 2",
+      "default": "A state-of-art, microprocessor controlled Glues System"
+    },
+    {
+      "type": "textarea",
+      "id": "info_text2",
+      "label": "Info Text 2",
+      "default": "Which no other company has… not even J&J"
+    },
+    {
+      "type": "text",
+      "id": "info_heading3",
+      "label": "Info Heading 3",
+      "default": "Microbiology Testings and Purity"
+    },
+    {
+      "type": "textarea",
+      "id": "info_text3",
+      "label": "Info Text 3",
+      "default": "We heat all Cotton buds through a tunnel which is maintained at 80 degrees. Purity is Guaranteed!"
+    },
+    {
+      "type": "color",
+      "id": "main_heading_color",
+      "label": "Main Heading Color",
+      "default": "#1c1c4a"
+    },
+    {
+      "type": "color",
+      "id": "sub_heading_color",
+      "label": "Sub Heading Color",
+      "default": "#f47920"
+    },
+    {
+      "type": "color",
+      "id": "subpoint_heading_color",
+      "label": "Subpoint Heading Color",
+      "default": "#2e86c1"
+    },
+        {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.global.color_scheme.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "spacing_top",
+      "label": "t:sections.global.spacing.spacing_top.label",
+      "options": [
+        {
+          "value": "0",
+          "label": "No"
+        },
+        {
+          "value": "1",
+          "label": "S"
+        },
+        {
+          "value": "2",
+          "label": "M"
+        },
+        {
+          "value": "4",
+          "label": "L"
+        },
+        {
+          "value": "6",
+          "label": "XL"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "select",
+      "id": "spacing_bottom",
+      "label": "t:sections.global.spacing.spacing_bottom.label",
+      "options": [
+        {
+          "value": "0",
+          "label": "No"
+        },
+        {
+          "value": "1",
+          "label": "S"
+        },
+        {
+          "value": "2",
+          "label": "M"
+        },
+        {
+          "value": "4",
+          "label": "L"
+        },
+        {
+          "value": "6",
+          "label": "XL"
+        }
+      ],
+      "default": "2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cotton Quality Block"
+    }
+  ]
+}
+{% endschema %}
+
+
+<style>
+  .cotton-quality-wrapper {
+    padding: 40px 20px;
+    background-color: #fff;
+  }
+
+  .cotton-quality-container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .cotton-quality-image {
+    flex: 1 1 40%;
+  }
+
+  .cotton-quality-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .cotton-quality-content {
+    flex: 1 1 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .main-heading {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: {{ section.settings.main_heading_color }};
+  }
+
+  .main-bullets {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+  }
+
+  .main-bullets li {
+     font-size: 16px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+
+  .sub-heading {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: {{ section.settings.sub_heading_color }};
+    margin-bottom: 20px;
+  }
+
+  .info-pairs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .info-pair h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    color: {{ section.settings.subpoint_heading_color }};
+  }
+
+  .info-pair p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+  }
+
+  @media screen and (max-width: 768px) {
+    .cotton-quality-container {
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+
+    .cotton-quality-image img {
+      height: auto;
+    }
+  }
+</style>
+
+
+
+  {%- style -%}
+    #shopify-section-{{ section.id }} > div {
+      padding-block-start: calc(var(--section-spacing-unit-size) * {{ section.settings.spacing_top }});
+      padding-block-end: calc(var(--section-spacing-unit-size) * {{ section.settings.spacing_bottom }});
+    }
+  {%- endstyle -%}
+<div class="cotton-quality-wrapper">
+  <div class="cotton-quality-container">
+    <div class="cotton-quality-image">
+      <img src="{{ section.settings.image | image_url: width: 1600 }}" alt="Cotton Image" loading="lazy" decoding="async" />
+    </div>
+    <div class="cotton-quality-content">
+      <h2 class="main-heading">{{ section.settings.main_heading }}</h2>
+      <ul class="main-bullets">
+        <li>{{ section.settings.bullet1 }}</li>
+        <li>{{ section.settings.bullet2 }}</li>
+        <li>{{ section.settings.bullet3 }}</li>
+      </ul>
+
+      <h3 class="sub-heading">{{ section.settings.sub_heading }}</h3>
+
+    <div class="info-pairs">
+  <div class="info-pair">
+    <h4 style="color: {{ section.settings.subpoint_heading_color }}; margin-bottom: 6px;">
+      {{ section.settings.info_heading1 }}
+    </h4>
+    <p style="margin-bottom: 16px;">
+      {{ section.settings.info_text1 }}
+    </p>
+  </div>
+  <div class="info-pair">
+    <h4 style="color: {{ section.settings.subpoint_heading_color }}; margin-bottom: 6px;">
+      {{ section.settings.info_heading2 }}
+    </h4>
+    <p style="margin-bottom: 16px;">
+      {{ section.settings.info_text2 }}
+    </p>
+  </div>
+  <div class="info-pair">
+    <h4 style="color: {{ section.settings.subpoint_heading_color }}; margin-bottom: 6px;">
+      {{ section.settings.info_heading3 }}
+    </h4>
+    <p style="margin-bottom: 16px;">
+      {{ section.settings.info_text3 }}
+    </p>
+  </div>
+</div>
+
+    </div>
+  </div>
+</div>
+

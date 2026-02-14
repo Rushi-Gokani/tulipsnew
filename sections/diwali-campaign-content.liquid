@@ -1,0 +1,152 @@
+{{- 'diwali-campaign.css' | asset_url | stylesheet_tag -}}
+
+<div class="diwali-campaign-content color-{{ section.settings.color_scheme }} gradient">
+  <div class="container {{ section.settings.section_width }}">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="section__heading {{ section.settings.heading_size }}">
+        {{- section.settings.heading -}}
+      </h2>
+    {%- endif -%}
+    
+    <div class="diwali-content-wrapper">
+      {{- section.settings.content -}}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Diwali Campaign Content",
+  "tag": "section",
+  "class": "section-diwali-campaign",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Campaign Details"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "options": [
+        {
+          "value": "h6",
+          "label": "XS"
+        },
+        {
+          "value": "h5",
+          "label": "S"
+        },
+        {
+          "value": "h4",
+          "label": "M"
+        },
+        {
+          "value": "h3",
+          "label": "L"
+        },
+        {
+          "value": "h2",
+          "label": "XL"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>Enter your campaign content here.</p>"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "options": [
+        {
+          "value": "max-w-page",
+          "label": "Page"
+        },
+        {
+          "value": "max-w-narrower",
+          "label": "Narrower"
+        },
+        {
+          "value": "max-w-fluid",
+          "label": "Fluid"
+        }
+      ],
+      "default": "max-w-narrower"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-1",
+      "label": "Color Scheme"
+    },
+    {
+      "type": "select",
+      "id": "spacing_top",
+      "label": "Spacing Top",
+      "options": [
+        {
+          "value": "0",
+          "label": "None"
+        },
+        {
+          "value": "1",
+          "label": "S"
+        },
+        {
+          "value": "2",
+          "label": "M"
+        },
+        {
+          "value": "4",
+          "label": "L"
+        },
+        {
+          "value": "6",
+          "label": "XL"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "select",
+      "id": "spacing_bottom",
+      "label": "Spacing Bottom",
+      "options": [
+        {
+          "value": "0",
+          "label": "None"
+        },
+        {
+          "value": "1",
+          "label": "S"
+        },
+        {
+          "value": "2",
+          "label": "M"
+        },
+        {
+          "value": "4",
+          "label": "L"
+        },
+        {
+          "value": "6",
+          "label": "XL"
+        }
+      ],
+      "default": "2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Diwali Campaign Content"
+    }
+  ]
+}
+{% endschema %}

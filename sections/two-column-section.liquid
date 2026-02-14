@@ -1,0 +1,169 @@
+{% schema %}
+{
+  "name": "Two Column Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_1",
+      "label": "First Section Heading",
+      "default": "Our Amazing Features"
+    },
+    {
+      "type": "text",
+      "id": "plant_name_1",
+      "label": "First Section Plant Name",
+      "default": "Plant A"
+    },
+    {
+      "type": "textarea",
+      "id": "description_1",
+      "label": "First Section Description",
+      "default": "Discover the best solutions tailored just for you. We offer high-quality services to meet all your needs."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "First Section Image"
+    },
+    {
+      "type": "text",
+      "id": "heading_2",
+      "label": "Second Section Heading",
+      "default": "Why Choose Us?"
+    },
+    {
+      "type": "text",
+      "id": "plant_name_2",
+      "label": "Second Section Plant Name",
+      "default": "Plant B"
+    },
+    {
+      "type": "textarea",
+      "id": "description_2",
+      "label": "Second Section Description",
+      "default": "We provide top-notch services with a focus on innovation, reliability, and customer satisfaction."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Second Section Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Two Column Section",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="two-column-section">
+  <div class="content">
+    <h4 class="plant-name">{{ section.settings.plant_name_1 }}</h4>
+    <!-- Add Plant Text -->
+    <h5>{{ section.settings.heading_1 }}</h5>
+    <p>{{ section.settings.description_1 }}</p>
+  </div>
+  <div class="image">
+    {% if section.settings.image_1 != blank %}
+      <img src="{{ section.settings.image_1 | img_url: 'large' }}" alt="Feature Image">
+    {% endif %}
+  </div>
+</section>
+
+<section class="two-column-section reverse">
+  <div class="image">
+    {% if section.settings.image_2 != blank %}
+      <img src="{{ section.settings.image_2 | img_url: 'large' }}" alt="Feature Image">
+    {% endif %}
+  </div>
+  <div class="content">
+    <h4 class="plant-name">{{ section.settings.plant_name_2 }}</h4>
+    <!-- Add Plant Text -->
+    <h5>{{ section.settings.heading_2 }}</h5>
+    <p>{{ section.settings.description_2 }}</p>
+  </div>
+</section>
+
+<style>
+           .two-column-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 50px;
+    margin-bottom: 60px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+   /* Reduce boldness for headings */
+    .two-column-section h5 {
+      font-weight: normal;
+      font-size: 20px; /* Less bold heading */
+      margin-bottom: 10px;
+     color:{{ settings.colors.header_text }};
+       margin-top: 10px;
+    }
+
+
+  /* Content block */
+  .two-column-section .content {
+    flex: 1;
+    max-width: 500px;
+    text-align: left;
+  }
+
+  /* Image block */
+  .two-column-section .image {
+    flex: 1;
+    max-width: 60%;
+  }
+
+  .two-column-section .image img {
+    width: 100%;
+    height: 280px; /* Increased height for better visibility */
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  /* Ensure second section image is on the left on large screens */
+  .two-column-section.reverse {
+    flex-direction: row;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 1024px) {
+    .two-column-section {
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      max-width: 90%;
+      padding: 30px; /* Adjust padding for better spacing */
+    }
+
+    /* On small screens, second section will have content first */
+    .two-column-section.reverse {
+      flex-direction: column-reverse;
+    }
+
+    .two-column-section .content {
+      max-width: 100%;
+      text-align: center; /* Center-align text for better readability */
+      padding: 0 20px; /* Add padding for better spacing */
+    }
+
+    .two-column-section .image {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    .two-column-section .image img {
+      height: auto; /* Let image adjust naturally */
+      max-height: 250px; /* Set a max height to prevent oversized images */
+      object-fit: contain; /* Prevents image from cropping */
+    }
+  }
+</style>

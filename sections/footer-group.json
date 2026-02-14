@@ -1,0 +1,149 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "wave_above_footer_AwGU9R": {
+      "type": "wave-above-footer",
+      "settings": {
+        "wave_image": "shopify://shop_images/wave_800x800_15481d6c-1a98-4358-a159-3ce32b60fda6.svg"
+      }
+    },
+    "custom_footer_gx6HeR": {
+      "type": "custom-footer",
+      "custom_css": [
+        ".heading-text {letter-spacing: 2px;}"
+      ],
+      "settings": {
+        "footer_wave_image": "shopify://shop_images/wave_800x800_15481d6c-1a98-4358-a159-3ce32b60fda6.svg",
+        "footer_logo": "shopify://shop_images/Tullips_logo.webp",
+        "footer_description": "<br>Customer Care: <br><a href=\"mailto:wecare@tulipshygiene.com\">wecare@tulipshygiene.com</a> <br><a href=\"tel:+919555745745\">+91-9555745745</a>.",
+        "menu_5_heading": "Customer Care Details",
+        "footer_bg_color": "#a4c86e",
+        "footer_text_color": "#ffffff",
+        "footer_link_hover_color": "#111111",
+        "menu_1_heading": "Category",
+        "menu_1": "category",
+        "menu_2_heading": "Legal",
+        "menu_2": "legal",
+        "menu_3_heading": "Quick Links",
+        "menu_3": "quick-links"
+      }
+    },
+    "footer_xjQ6Rm": {
+      "type": "footer",
+      "blocks": {
+        "brand_M9BKRn": {
+          "type": "brand",
+          "settings": {
+            "column_factor": 2,
+            "row_factor": 1,
+            "logo_svg_code": "",
+            "logo_width": 240,
+            "logo_width_mobile": 150,
+            "text": "<p>Share contact information, store details, and brand content with your customers.</p>",
+            "content_position_vertical": "start",
+            "content_alignment": "start",
+            "content_alignment_for_mobile": "center"
+          }
+        },
+        "link_list_yykxXc": {
+          "type": "link_list",
+          "settings": {
+            "column_factor": 2,
+            "row_factor": 1,
+            "menu_layout": "vertical",
+            "menu": "footer",
+            "title": "",
+            "title_url": "",
+            "menu_link_opacity": 100,
+            "show_first_menu_on_mobile": true
+          }
+        },
+        "newsletter_aN8ixw": {
+          "type": "newsletter",
+          "settings": {
+            "column_factor": 2,
+            "row_factor": 1,
+            "heading": "Newsletter",
+            "text": "<p>Subscribe to our newsletter and get some percentage off your first purchase</p>",
+            "content_position_vertical": "start",
+            "content_alignment": "start",
+            "content_alignment_for_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "brand_M9BKRn",
+        "link_list_yykxXc",
+        "newsletter_aN8ixw"
+      ],
+      "disabled": true,
+      "settings": {
+        "spacing_grid": "2",
+        "show_border_top": false,
+        "section_width": "max-w-page",
+        "color_scheme": "scheme-a179109e-d70a-43e9-aebf-b610fe35dd4c",
+        "spacing_top": "2",
+        "spacing_bottom": "1"
+      }
+    },
+    "footer_JadcgE": {
+      "type": "footer",
+      "blocks": {
+        "richtext_GWFib7": {
+          "type": "richtext",
+          "settings": {
+            "column_factor": 3,
+            "row_factor": 1,
+            "heading": "",
+            "text": "<p>Copyright © [year] All rights reserved. </p>",
+            "content_position_vertical": "center",
+            "content_alignment": "start",
+            "content_alignment_for_mobile": "center"
+          }
+        },
+        "social_media_GddAic": {
+          "type": "social_media",
+          "settings": {
+            "column_factor": 3,
+            "row_factor": 1,
+            "icons": true,
+            "social_links_in_new_tab": true,
+            "heading": "",
+            "content_position_vertical": "center",
+            "content_alignment": "end",
+            "content_alignment_for_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_GWFib7",
+        "social_media_GddAic"
+      ],
+      "disabled": true,
+      "settings": {
+        "spacing_grid": "1",
+        "show_border_top": true,
+        "section_width": "max-w-page",
+        "color_scheme": "scheme-7",
+        "spacing_top": "1",
+        "spacing_bottom": "1"
+      }
+    }
+  },
+  "order": [
+    "wave_above_footer_AwGU9R",
+    "custom_footer_gx6HeR",
+    "footer_xjQ6Rm",
+    "footer_JadcgE"
+  ]
+}

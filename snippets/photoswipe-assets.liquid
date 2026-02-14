@@ -1,0 +1,6 @@
+{%- unless photoswipe_assets_included -%}
+  {%- assign photoswipe_assets_included = true -%}
+  <link data-photoswipe rel="stylesheet" href="{{- 'photoswipe.css' | asset_url -}}" media="print" onload="this.media='all'">
+  <script data-photoswipe src="{{- 'photoswipe.umd.min.js' | asset_url -}}" defer="defer"></script>
+  <script data-photoswipe src="{{- 'photoswipe-lightbox.umd.min.js' | asset_url -}}" defer="defer"></script>
+{%- endunless -%}

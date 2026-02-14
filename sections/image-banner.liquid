@@ -1,0 +1,116 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    padding: 5px !important;
+    margin: 0 !important;
+  }
+  #shopify-section-{{ section.id }} .section {
+    padding: 5px !important;
+    margin: 0 !important;
+  }
+{%- endstyle -%}
+<div style="width: 100%; background-color: #fff; text-align: center; margin: 0; padding: 0;">
+      {% if section.settings.link_url != blank %}
+    <a href="{{ section.settings.link_url }}" {% if section.settings.open_in_new_tab %}target="_blank"{% endif %} style="display: inline-block; text-decoration: none; margin: 0; padding: 0;">
+  {% endif %}
+  {% if section.settings.banner_image != blank %}
+    <img
+      src="{{ section.settings.banner_image | image_url: width: 2560 }}"
+      srcset="
+        {{ section.settings.banner_image | image_url: width: 400 }} 400w,
+        {{ section.settings.banner_image | image_url: width: 800 }} 800w,
+        {{ section.settings.banner_image | image_url: width: 1200 }} 1200w,
+        {{ section.settings.banner_image | image_url: width: 1600 }} 1600w,
+        {{ section.settings.banner_image | image_url: width: 2560 }} 2560w
+      "
+      sizes="100vw"
+      alt="{{ section.settings.banner_image.alt | escape }}"
+      loading="lazy"
+      width="{{ section.settings.image_width }}"
+      height="{{ section.settings.image_height }}"
+      style="display: inline-block; vertical-align: middle; object-fit: cover; max-width: 100%; height: auto; margin: 0; padding: 0;"
+    />
+  {% else %}
+    <div style="padding: 20px; background-color: #f0f0f0; text-align: center;">
+      <p>Please upload a banner image</p>
+    </div>
+  {% endif %}
+   {% if section.settings.link_url != blank %}
+    </a>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Image Banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+     {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL",
+      "info": "Where users will be redirected when clicking the banner"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_in_new_tab",
+      "label": "Open in new tab",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Banner Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner Image"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "min": 400,
+      "max": 1400,
+      "step": 10,
+      "unit": "px",
+      "label": "Image Width",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "min": 40,
+      "max": 140,
+      "step": 1,
+      "unit": "px",
+      "label": "Image Height",
+      "default": 80
+    },
+    {
+      "type": "select",
+      "id": "object_fit",
+      "label": "Image Fit",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "Contain"
+        },
+        {
+          "value": "fill",
+          "label": "Fill"
+        }
+      ],
+      "default": "contain"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Banner"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,271 @@
+{% schema %}
+{
+  "name": "Quality Accordion Section",
+  "settings": [
+{
+    "type": "color",
+    "id": "heading_color",
+    "label": "Main Heading Color",
+    "default": "#000000"
+  },
+  {
+    "type": "color",
+    "id": "subheading_color",
+    "label": "Subheading Color",
+    "default": "#e74c3c"
+  },
+  {
+    "type": "color",
+    "id": "paragraph_color",
+    "label": "Paragraph Text Color",
+    "default": "#333333"
+  },
+  {
+    "type": "color",
+    "id": "active_bg_color",
+    "label": "Active Accordion Background Color",
+    "default": "#1C1C4A"
+  },
+  {
+    "type": "color",
+    "id": "inactive_bg_color",
+    "label": "Inactive Accordion Background Color",
+    "default": "#ffffff"
+  },
+  {
+    "type": "color",
+    "id": "tab_bg_color",
+    "label": "Active Tab Background Color",
+    "default": "#e0e0e0"
+  }
+
+  ],
+  "blocks": [
+    {
+      "type": "accordion_item",
+      "name": "Accordion Item",
+      "settings": [
+       { "type": "text", "id": "icon_class", "label": "Font Awesome Icon Class (e.g., fas fa-star)" },
+        { "type": "text", "id": "title", "label": "Accordion Title" },
+        { "type": "image_picker", "id": "image", "label": "Left Image" },
+        { "type": "text", "id": "main_heading", "label": "Main Heading" },
+
+
+        { "type": "text", "id": "subheading_1", "label": "Subheading 1" },
+        { "type": "textarea", "id": "list_items_1", "label": "List Items 1 (one per line)" },
+
+
+        { "type": "text", "id": "subheading_2", "label": "Subheading 2" },
+        { "type": "textarea", "id": "list_items_2", "label": "List Items 2 (one per line)" },
+
+
+        { "type": "text", "id": "subheading_3", "label": "Subheading 3" },
+        { "type": "textarea", "id": "list_items_3", "label": "List Items 3 (one per line)" },
+
+
+          { "type": "text", "id": "subheading_4", "label": "Subheading 4" },
+          { "type": "textarea", "id": "list_items_4", "label": "List Items 4 (one per line)" },
+
+
+          { "type": "text", "id": "subheading_5", "label": "Subheading 5" },
+       { "type": "textarea", "id": "list_items_5", "label": "List Items 5 (one per line)" },
+
+
+          { "type": "text", "id": "subheading_6", "label": "Subheading 6" },
+       { "type": "textarea", "id": "list_items_6", "label": "List Items 6 (one per line)" },
+
+      ]
+    }
+  ],
+  "presets": [{ "name": "Quality Accordion Section" }]
+}
+{% endschema %}
+
+<div class="quality-accordion-wrapper">
+  {% for block in section.blocks %}
+    <div class="accordion-item" style="background-color: {{ section.settings.inactive_bg_color }};">
+      <button class="accordion-toggle" data-index="{{ forloop.index0 }}">
+        <span class="accordion-icon"><i class="{{ block.settings.icon_class }}"></i></span>
+        <span class="accordion-title">{{ block.settings.title }}</span>
+        <span class="accordion-toggle-icon">➕</span>
+      </button>
+
+      <div class="accordion-content" style="display: none;">
+        <div class="accordion-inner">
+          {% if block.settings.image %}
+            <div class="accordion-image">
+              <img src="{{ block.settings.image | img_url: 'medium' }}" alt="Accordion Image">
+            </div>
+          {% endif %}
+
+          <div class="accordion-text">
+            <h2 style="color: {{ section.settings.heading_color }};">{{ block.settings.main_heading }}</h2>
+
+            {% for i in (1..6) %}
+              {% assign subheading_key = 'subheading_' | append: i %}
+              {% assign subheading = block.settings[subheading_key] %}
+
+              {% assign list_key = 'list_items_' | append: i %}
+              {% assign list_items = block.settings[list_key] %}
+
+              {% if subheading %}
+                <h6 class="subheading" style="color: {{ section.settings.subheading_color }};">
+                  {{ subheading }}
+                </h6>
+              {% endif %}
+
+              {% if list_items %}
+                {% assign list_with_br = list_items | newline_to_br %}
+                {% assign lines = list_with_br | split: '<br />' %}
+                <ul class="list-text" style="color: {{ section.settings.paragraph_color }};">
+                  {% for item in lines %}
+                    {% assign trimmed_item = item | strip %}
+                    {% if trimmed_item != '' %}
+                      <li>{{ trimmed_item }}</li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<style>
+  .quality-accordion-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 0;
+    font-family: inherit;
+  }
+
+  /* Accordion Item */
+  .accordion-item {
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Accordion Toggle Button */
+  .accordion-toggle {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border: none;
+    color: inherit;
+    text-align: left;
+  }
+
+  .accordion-toggle.active {
+    color: #fff;
+  }
+
+  /* Icon */
+  .accordion-icon {
+    font-size: 22px;
+    margin-right: 10px;
+  }
+
+  /* Title */
+  .accordion-title {
+    flex: 1;
+  }
+
+  /* Toggle Icon */
+  .accordion-toggle-icon {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  /* Accordion content container */
+  .accordion-content {
+    padding: 20px;
+    background-color: transparent;
+  }
+
+  /* Inner flex container */
+  .accordion-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  /* Left Image */
+  .accordion-image {
+    flex: 1 1 40%;
+  }
+
+  .accordion-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  /* Right text */
+  .accordion-text {
+    flex: 1 1 55%;
+  }
+
+  /* Main heading */
+  .accordion-text h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  /* Subheading */
+  .subheading {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+
+  /* Paragraph */
+  .paragraph {
+    margin-bottom: 15px;
+    line-height: 1.5;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const accordionItems = document.querySelectorAll(".accordion-item");
+    const toggles = document.querySelectorAll(".accordion-toggle");
+
+    toggles.forEach((toggle, i) => {
+      toggle.addEventListener("click", function () {
+        const isActive = this.classList.contains("active");
+
+        // Close all
+        toggles.forEach((btn, idx) => {
+          btn.classList.remove("active");
+          btn.querySelector(".accordion-toggle-icon").textContent = "➕";
+          btn.style.backgroundColor = "transparent"; // Reset tab bg
+          accordionItems[idx].style.backgroundColor = "{{ section.settings.inactive_bg_color }}";
+          accordionItems[idx].querySelector(".accordion-content").style.display = "none";
+        });
+
+        // If not active, open it
+        if (!isActive) {
+          this.classList.add("active");
+          this.querySelector(".accordion-toggle-icon").textContent = "➖";
+          this.style.backgroundColor = "{{ section.settings.tab_bg_color }}";
+          accordionItems[i].style.backgroundColor = "{{ section.settings.active_bg_color }}";
+          accordionItems[i].querySelector(".accordion-content").style.display = "block";
+        }
+      });
+    });
+  });
+</script>

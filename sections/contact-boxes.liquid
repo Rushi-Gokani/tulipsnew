@@ -1,0 +1,299 @@
+<section class="contact-boxes">
+  <div class="contact-box">
+    <h3>
+      {{ section.settings.customer_service_title -}}
+      <i class="fas fa-paper-plane" style="color: black;"></i>
+    </h3>
+    <p>{{ section.settings.customer_service_desc }}</p>
+    <a href="mailto:{{ section.settings.customer_service_email }}">
+      {{ section.settings.customer_service_email -}}
+      <i class="fas fa-envelope"></i>
+    </a>
+  </div>
+
+  <div class="contact-box">
+    <h3>
+      {{ section.settings.helpline_title }}
+      <i class="fas fa-paper-plane" style="color: black;"></i>
+    </h3>
+    <p>{{ section.settings.helpline_desc }}</p>
+    <a href="tel:{{ section.settings.helpline_phone }}">
+      {{ section.settings.helpline_phone }}
+      <i class="fas fa-phone"></i>
+    </a>
+  </div>
+</section>
+
+<!-- Address Box (Newly Added & Centered Below) -->
+<section class="address-box">
+  <div class="contact-box">
+    <h3>
+      {{ section.settings.address_title }}
+      <i class="fas fa-map-marker-alt" style="color: black;"></i>
+    </h3>
+    <p>{{ section.settings.address_details }}</p>
+    <a href="tel:{{ section.settings.additional_phone }}">
+      {{ section.settings.additional_phone }}
+      <i class="far fa-comment"></i>
+      <!-- Regular (outline) version -->
+    </a>
+  </div>
+</section>
+
+<style>
+    .contact-boxes {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      align-items: center;
+      max-width: 1100px;
+      padding: 50px 0;
+      margin: auto;
+    }
+
+    .address-box {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px; /* Creates spacing between the top boxes and this one */
+    }
+
+    .contact-box {
+      width: 900px;
+      border: 2px solid #f4a460;
+      padding: 25px;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-box h3 {
+      font-size: 30px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .contact-box p {
+      font-size: 20px;
+      color: #444;
+      margin-bottom: 15px;
+    }
+
+    .contact-box a {
+      font-size: 28px;
+      color: #F0652F;
+      font-weight: bold;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .contact-box a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-box i {
+      font-size: 26px;
+      color: #F0652F;
+    }
+
+    @media (max-width: 1024px) {
+      .contact-boxes {
+        flex-direction: column;
+        padding: 40px 20px;
+      }
+
+      .address-box {
+        margin-top: 20px;
+      }
+
+      .contact-box {
+        width: 80%;
+        padding: 20px;
+      }
+
+      .contact-box h3 {
+        font-size: 28px;
+      }
+
+      .contact-box p {
+        font-size: 20px;
+      }
+
+      .contact-box a {
+        font-size: 28px;
+      }
+
+      .contact-box i {
+        font-size: 26px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .contact-boxes {
+        padding: 30px 15px;
+      }
+
+      .address-box {
+        margin-top: 15px;
+      }
+
+      .contact-box {
+        width: 90%;
+        padding: 18px;
+      }
+
+      .contact-box h3 {
+        font-size: 26px;
+      }
+
+      .contact-box p {
+        font-size: 18px;
+      }
+
+      .contact-box a {
+        font-size: 24px;
+      }
+
+      .contact-box i {
+        font-size: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .contact-boxes {
+        padding: 20px 10px;
+      }
+
+      .address-box {
+        margin-top: 10px;
+      }
+
+      .contact-box {
+        width: 95%;
+        padding: 15px;
+      }
+
+      .contact-box h3 {
+        font-size: 24px;
+      }
+
+      .contact-box p {
+        font-size: 16px;
+      }
+
+      .contact-box a {
+        font-size: 20px;
+      }
+
+      .contact-box i {
+        font-size: 22px;
+      }
+    }
+    @media (max-width: 1024px) {
+    .contact-boxes, .address-box {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .contact-box {
+      width: 80%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contact-boxes, .address-box {
+      width: 100%;
+      align-items: center;
+    }
+
+    .contact-box {
+      width: 90%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contact-boxes, .address-box {
+      width: 100%;
+      align-items: center;
+    }
+
+    .contact-box {
+      width: 95%;
+      padding: 15px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Contact Boxes",
+  "settings": [
+    {
+      "type": "text",
+      "id": "customer_service_title",
+      "label": "Customer Service Title",
+      "default": "Customer Service"
+    },
+    {
+      "type": "text",
+      "id": "customer_service_desc",
+      "label": "Customer Service Description",
+      "default": "We reply within 24 hours"
+    },
+    {
+      "type": "text",
+      "id": "customer_service_email",
+      "label": "Customer Service Email",
+      "default": "support@ulphysync.store"
+    },
+    {
+      "type": "text",
+      "id": "helpline_title",
+      "label": "Helpline Title",
+      "default": "Helpline"
+    },
+    {
+      "type": "text",
+      "id": "helpline_desc",
+      "label": "Helpline Description",
+      "default": "Call us for quick support"
+    },
+    {
+      "type": "text",
+      "id": "helpline_phone",
+      "label": "Helpline Phone",
+      "default": "+1 800 656 1234"
+    },
+    {
+      "type": "text",
+      "id": "address_title",
+      "label": "Address Title",
+      "default": "Our Address"
+    },
+    {
+      "type": "textarea",
+      "id": "address_details",
+      "label": "Address Details",
+      "default": "1234 Business St, New York, NY 10001, USA"
+    },
+    {
+      "type": "text",
+      "id": "additional_phone",
+      "label": "Additional Phone",
+      "default": "+1 800 789 5678"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Boxes",
+      "category": "Text"
+    }
+  ]
+}
+{% endschema %}

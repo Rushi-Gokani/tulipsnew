@@ -1,0 +1,66 @@
+{%- assign product_description_class = 'product__description-section' -%}
+
+{%- liquid
+  assign new_product_description = ''
+  assign display_description = false
+
+  if metafield_for_product_variant != blank
+    assign new_product_description = new_product_description | append: metafield_for_product_variant
+  endif
+
+  if block.settings.show_content and metafield_for_product_variant != blank
+    assign display_description = true
+  elsif metafield_for_product_variant == blank
+    assign display_description = true
+  endif
+
+  if display_description
+    assign new_product_description = new_product_description | append: product.description
+  endif
+-%}
+
+<div class="{{ product_description_class }}" {{ block.shopify_attributes }}>
+  {% if block.settings.layout == 'plain' %}
+    {%- if new_product_description != blank -%}
+      <div class="rte">
+        {%- render 'text-truncator', text: new_product_description, max_lines: block.settings.text_truncate -%}
+      </div>
+    {%- endif -%}
+  {% elsif block.settings.layout == 'accordion' %}
+    {{- 'section-accordions.css' | asset_url | stylesheet_tag -}}
+    <accordion-default class="accordion product__accordion" data-hide-multiple>
+      <details class="accordion__section" id="Details-New-{{- block.id -}}" {{- block.shopify_attributes -}}>
+        <summary class="accordion__button h5 js-btn" id="Details-Summary-New-{{- block.id -}}">
+          <span>
+            {% liquid
+              assign icon_alt = block.settings.title
+              if block.settings.custom_icon
+                echo block.settings.custom_icon | image_url: width: 24 | image_tag: alt: icon_alt
+              elsif block.settings.icon != blank
+                render 'icon', icon_name: block.settings.icon
+              endif
+            %}
+            {% if block.settings.title != blank %}
+              <span>{{- block.settings.title -}}</span>
+            {% else %}
+              <span>{{ 'product.description' | t }}</span>
+            {% endif %}
+          </span>
+          <div class="accordion__icon">
+            {%- render 'icon', icon_name: 'theme-minus' -%}
+            {%- render 'icon', icon_name: 'theme-minus' -%}
+          </div>
+        </summary>
+        <div class="accordion__body" id="Details-Content-New-{{- block.id -}}">
+          <div class="accordion__body-inner">
+            {%- if new_product_description != blank -%}
+              <div class="rte">
+                {{- new_product_description -}}
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </details>
+    </accordion-default>
+  {% endif %}
+</div>

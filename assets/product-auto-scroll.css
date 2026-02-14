@@ -1,0 +1,142 @@
+/* Product Auto-Scroll Styles */
+
+/* Smooth transitions for auto-scrolling */
+.swiper--product-gallery .swiper-slide {
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Auto-scroll indicator */
+.product-auto-scroll-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.product-auto-scroll-indicator.show {
+  opacity: 1;
+}
+
+/* Pause indicator when hovering */
+.swiper--product-gallery:hover .product-auto-scroll-indicator {
+  opacity: 1;
+}
+
+/* Enhanced navigation arrows for auto-scroll */
+.swiper--product-gallery .swiper-button-next,
+.swiper--product-gallery .swiper-button-prev {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.swiper--product-gallery:hover .swiper-button-next,
+.swiper--product-gallery:hover .swiper-button-prev {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Auto-scroll progress bar */
+.product-auto-scroll-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  z-index: 5;
+}
+
+.product-auto-scroll-progress-bar {
+  height: 100%;
+  background: #ffffff;
+  width: 0%;
+  transition: width linear;
+}
+
+/* Pause progress on hover */
+.swiper--product-gallery:hover .product-auto-scroll-progress-bar {
+  animation-play-state: paused;
+}
+
+/* Mobile optimizations */
+@media (max-width: 749px) {
+  .product-auto-scroll-indicator {
+    bottom: 10px;
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+  
+  .product-auto-scroll-progress {
+    height: 1px;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .swiper--product-gallery .swiper-slide {
+    transition: none;
+  }
+  
+  .product-auto-scroll-progress-bar {
+    transition: none;
+  }
+}
+
+/* Auto-scroll controls */
+.product-auto-scroll-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  display: flex;
+  gap: 8px;
+}
+
+.product-auto-scroll-control {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.product-auto-scroll-control:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.product-auto-scroll-control.active {
+  background: #007bff;
+}
+
+/* Auto-scroll speed indicator */
+.product-auto-scroll-speed {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 10px;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.swiper--product-gallery:hover .product-auto-scroll-speed {
+  opacity: 1;
+} 

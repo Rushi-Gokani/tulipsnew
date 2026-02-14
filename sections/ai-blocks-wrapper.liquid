@@ -1,0 +1,88 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    margin-top: {{ section.settings.margin_top | default: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | default: 0 }}px;
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="container {{ section.settings.section_width }} js-animation-fade-in">
+    {%- for block in section.blocks -%}
+      {%- render block -%}
+    {%- endfor -%}
+  </div>
+  {% if section.blocks.size == 0 %}
+    <div class="container {{ section.settings.section_width }}">
+      <p>No blocks added. Add a YouTube video block.</p>
+    </div>
+  {% endif %}
+  {%- if section.settings.show_wave and section.settings.wave_image != blank -%}
+    <div class="section-wave">
+      <img src="{{ section.settings.wave_image | image_url }}" alt="" loading="lazy"/>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "AI blocks wrapper",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section width",
+      "options": [
+        { "value": "max-w-page", "label": "Page" },
+        { "value": "max-w-fluid", "label": "Fluid" },
+        { "value": "max-w-full", "label": "Full" }
+      ],
+      "default": "max-w-page"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin bottom",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wave",
+      "label": "Show wave image",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "wave_image",
+      "label": "Wave image"
+    }
+  ],
+  "blocks": [
+    { "type": "ai_gen_block_e01f165", "name": "YouTube video" }
+  ],
+  "presets": [
+    { "name": "AI blocks wrapper" }
+  ]
+}
+{% endschema %}
+
+

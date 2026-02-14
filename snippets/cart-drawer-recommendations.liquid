@@ -1,0 +1,367 @@
+{% comment %}
+  Renders "You may also like" recommendations in cart drawer
+  Shows products from collections that cart items belong to
+  Excludes specified collections: "Our Product", "All Product", "GST purpose collection"
+
+  Usage:
+  {%- render 'cart-drawer-recommendations' -%}
+{% endcomment %}
+
+{%- liquid
+  assign excluded_collections = 'all-products,our-products,18-gst-tax-purposes-only,12-gst-collection-tax-purpose,5-gst-tax-purposes-only'
+  assign excluded_collections_array = excluded_collections | split: ','
+  assign max_products = 8
+  assign cart_collections = ''
+  assign recommended_handles = ''
+  assign cart_product_ids = cart.items | map: 'product_id'
+  assign show_slider = false
+-%}
+
+{%- comment -%} Get all collections from cart items {%- endcomment -%}
+{%- for item in cart.items -%}
+  {%- for collection in item.product.collections -%}
+    {%- unless excluded_collections_array contains collection.handle -%}
+      {%- unless cart_collections contains collection.handle -%}
+        {%- if cart_collections != blank -%}
+          {%- assign cart_collections = cart_collections | append: ',' | append: collection.handle -%}
+        {%- else -%}
+          {%- assign cart_collections = collection.handle -%}
+        {%- endif -%}
+      {%- endunless -%}
+    {%- endunless -%}
+  {%- endfor -%}
+{%- endfor -%}
+
+{%- comment -%} Get products from these collections, excluding cart items {%- endcomment -%}
+{%- if cart_collections != blank -%}
+  {%- assign cart_collections_array = cart_collections | split: ',' -%}
+  {%- assign recommended_handles = '' -%}
+  {%- assign product_count = 0 -%}
+  
+  {%- for collection_handle in cart_collections_array -%}
+    {%- assign collection = collections[collection_handle] -%}
+    {%- if collection != blank -%}
+      {%- if product_count < max_products -%}
+        {%- for product in collection.products -%}
+          {%- if product_count < max_products -%}
+            {%- unless cart_product_ids contains product.id -%}
+              {%- assign existing_handles = recommended_handles | split: ',' -%}
+              {%- unless existing_handles contains product.handle -%}
+                {%- if recommended_handles != blank -%}
+                  {%- assign recommended_handles = recommended_handles | append: ',' -%}
+                {%- endif -%}
+                {%- assign recommended_handles = recommended_handles | append: product.handle -%}
+                {%- assign product_count = product_count | plus: 1 -%}
+              {%- endunless -%}
+            {%- endunless -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{%- comment -%} Debug information {%- endcomment -%}
+{%- if cart.items.size > 0 -%}
+  <!-- DEBUG: Cart has {{ cart.items.size }} items -->
+  <!-- DEBUG: Excluded collections: {{ excluded_collections }} -->
+  <!-- DEBUG: Cart collections found: {{ cart_collections }} -->
+  <!-- DEBUG: Recommended product handles: {{ recommended_handles }} -->
+  {%- for item in cart.items -%}
+    <!-- DEBUG: Cart item {{ item.product.title }} collections: {% for collection in item.product.collections %}{{ collection.handle }}{% unless forloop.last %}, {% endunless %}{% endfor %} -->
+  {%- endfor -%}
+{%- endif -%}
+
+{%- assign handles_to_render = recommended_handles -%}
+{%- if cart.items.size > 0 and handles_to_render == blank -%}
+  {%- assign fallback_products = collections.all.products | where: 'available', true -%}
+  {%- assign fallback_products = fallback_products | slice: 0, 8 -%}
+  {%- if fallback_products.size > 0 -%}
+    {%- assign handles_to_render = fallback_products | map: 'handle' | join: ',' -%}
+  {%- endif -%}
+{%- endif -%}
+
+{%- if cart.items.size > 0 and handles_to_render != blank -%}
+  {%- assign products_array = handles_to_render | split: ',' -%}
+  {%- assign rendered_products = 0 -%}
+  {%- capture slider_markup -%}
+    <div class="cart-drawer__you-may-also-like">
+      <div class="cart-drawer__you-may-also-like-header">
+        <h3 class="cart-drawer__you-may-also-like-title h5">{{ 'cart.you_may_also_like' | t | default: 'You may also like' }}</h3>
+        <div class="swiper-buttons card-slider__buttons no-js-hidden cart-drawer__nav-buttons">
+          <button type="button" class="swiper-button swiper-button--prev cart-drawer__nav--prev" aria-label="{{ 'general.previous' | t | default: 'Previous' }}">
+            {%- render 'icon', icon_name: 'theme-chevron', class: 'icon--rotate-180' -%}
+          </button>
+          <button type="button" class="swiper-button swiper-button--next cart-drawer__nav--next" aria-label="{{ 'general.next' | t | default: 'Next' }}">
+            {%- render 'icon', icon_name: 'theme-chevron' -%}
+          </button>
+        </div>
+      </div>
+      <div class="cart-drawer__you-may-also-like-slider">
+        <div class="swiper cart-drawer__swiper-you-may-also-like">
+          <div class="swiper-wrapper">
+            {%- for product_handle in products_array -%}
+              {%- if rendered_products >= max_products -%}{%- break -%}{%- endif -%}
+              {%- if product_handle != blank -%}
+                {%- assign product = all_products[product_handle] -%}
+                {%- if product != blank -%}
+                  {%- unless cart_product_ids contains product.id -%}
+                    {%- assign rendered_products = rendered_products | plus: 1 -%}
+                    {%- assign product_image = product.featured_image | default: product.images.first -%}
+                    <div class="swiper-slide">
+                      <div class="cart-drawer__recommendation-item">
+                        <div class="card-product-small">
+                          <a href="{{ product.url }}" class="card-product-small-media">
+                            {%- if product_image != blank -%}
+                              {%- render 'image', image: product_image, alt: product_image.alt | escape -%}
+                            {%- else -%}
+                              <div class="card-product-small-placeholder">No Image</div>
+                            {%- endif -%}
+                          </a>
+                          <div class="card-product-small-details">
+                            <a href="{{ product.url }}" class="card-product-small-title-link">
+                              <h6 class="card-product-small-title">{{ product.title | escape }}</h6>
+                            </a>
+                            <p class="card-product-small-price">
+                              {%- if product.compare_at_price_min > product.price_min -%}
+                                <del>{{ product.compare_at_price_min | money }}</del>
+                                <ins>{{ product.price_min | money }}</ins>
+                              {%- else -%}
+                                {{ product.price_min | money }}
+                              {%- endif -%}
+                            </p>
+                            {%- if settings.product_card_enable_quick_add_to_cart_button -%}
+                              <button type="button" class="quick-cart-drawer__trigger quick-cart-drawer__trigger--recommendations button button--filled" aria-expanded="false" onclick="preventDefault(event)" aria-controls="quick-cart-drawer" data-product-url="{{ product.handle | prepend: '/products/' }}">
+                                {{ "cart.quick_add" | t }}
+                                <div class="quick-cart-drawer__trigger--loading">
+                                  {%- render 'loading-spinner' -%}
+                                </div>
+                              </button>
+                            {%- endif -%}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {%- endunless -%}
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endcapture -%}
+  {%- if rendered_products > 0 -%}
+    {%- assign show_slider = true -%}
+    {{ slider_markup }}
+  {%- endif -%}
+{%- endif -%}
+
+{%- if show_slider -%}
+  <style>
+    .cart-drawer__you-may-also-like {
+      margin-top: 1.5rem;
+      border-top: 1px solid rgba(var(--color-foreground), 0.1);
+    }
+    
+    .cart-drawer__you-may-also-like-header {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between; /* title left, arrows right */
+      gap: 10px;
+      flex-wrap: nowrap;
+    }
+    /* Keep navigation inline within header instead of overlaying slider */
+    .cart-drawer__you-may-also-like .swiper-buttons {
+      position: static;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: auto;
+      padding-top: 2px; /* align vertically with title */
+    }
+    .cart-drawer__you-may-also-like .swiper-button {
+      position: static;
+      inset: auto;
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(var(--color-foreground), 0.15);
+      border-radius: 50%;
+      background: transparent;
+      margin: 0;
+    }
+    /* Ensure prev arrow points left even if icon class is overridden */
+    .cart-drawer__you-may-also-like .cart-drawer__nav--prev svg {
+      transform: rotate(360deg) !important;
+      transform-origin: 50% 50%;
+      display: block;
+    }
+    /* No transform needed; prev uses icon--rotate-180 class */
+    
+    .cart-drawer__you-may-also-like-title {
+      margin: 0;
+      font-weight: 600;
+    }
+    
+    .cart-drawer__you-may-also-like-slider {
+      overflow: hidden;
+    }
+    
+    .cart-drawer__swiper-you-may-also-like {
+      overflow: visible;
+    }
+    
+    .cart-drawer__swiper-you-may-also-like .swiper-wrapper {
+      align-items: stretch;
+    }
+    
+    .cart-drawer__you-may-also-like .swiper-slide {
+      width: 160px;
+      flex-shrink: 0;
+    }
+    
+    .cart-drawer__recommendation-item {
+      border: 1px solid rgba(var(--color-foreground), 0.1);
+      border-radius: 8px;
+      padding: 0.75rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card-product-small {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      height: 100%;
+    }
+    
+    .card-product-small-media {
+      display: block;
+      border-radius: 6px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      background: rgba(var(--color-foreground), 0.05);
+    }
+    
+    .card-product-small-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .card-product-small-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: rgba(var(--color-foreground), 0.6);
+    }
+    
+    .card-product-small-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      flex: 1;
+    }
+    
+    .card-product-small-title-link {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .card-product-small-title {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.3;
+    }
+    
+    .card-product-small-price {
+      margin: 0;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      gap: 0.3rem;
+      align-items: baseline;
+    }
+    
+    .card-product-small-price del {
+      color: rgba(var(--color-foreground), 0.6);
+      font-size: 0.75rem;
+    }
+    
+    .card-product-small-price ins {
+      text-decoration: none;
+    }
+    
+    .quick-cart-drawer__trigger--recommendations {
+      align-self: flex-start;
+      margin-top: auto;
+    }
+    
+    @media screen and (max-width: 750px) {
+      .cart-drawer__you-may-also-like .swiper-slide {
+        width: 140px;
+      }
+    }
+  </style>
+
+  <script>
+    // Global function to initialize cart drawer recommendations Swiper
+    window.initCartDrawerRecommendationsSwiper = function() {
+      if (typeof Swiper === 'undefined') {
+        return;
+      }
+
+      document.querySelectorAll('.cart-drawer__you-may-also-like').forEach(function(container) {
+        var swiperElement = container.querySelector('.cart-drawer__swiper-you-may-also-like');
+        if (!swiperElement) {
+          return;
+        }
+
+        // Check if Swiper is already initialized on this element
+        if (swiperElement.swiper) {
+          return; // Skip if already initialized
+        }
+
+        var prevButton = container.querySelector('.cart-drawer__nav--prev');
+        var nextButton = container.querySelector('.cart-drawer__nav--next');
+        var swiperConfig = {
+          slidesPerView: 'auto',
+          spaceBetween: 12,
+          freeMode: true,
+          grabCursor: true,
+          watchOverflow: true,
+          breakpoints: {
+            750: {
+              spaceBetween: 16,
+            }
+          }
+        };
+
+        if (prevButton && nextButton) {
+          swiperConfig.navigation = {
+            prevEl: prevButton,
+            nextEl: nextButton
+          };
+        }
+
+        new Swiper(swiperElement, swiperConfig);
+      });
+    };
+
+    // Initialize on DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', function() {
+      window.initCartDrawerRecommendationsSwiper();
+    });
+  </script>
+{%- endif -%}
+
+
+

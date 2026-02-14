@@ -1,0 +1,378 @@
+{% doc %}
+  @prompt
+    give  section where we can select collection & that collection will show in grid view, mobile responsive, make sure not overflow the page in mobile , The Add to Cart button is not showing render  Add to cart button, basically we nwated defualt collection page here
+{% enddoc %}
+
+{%- render 'css', css: 'section-collection.css' -%}
+{%- render 'css', css: 'component-card-product.css' -%}
+{%- render 'css', css: 'component-card-text.css' -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} > div {
+    padding-block-start: calc(var(--section-spacing-unit-size) * {{ block.settings.spacing_top | default: 2 }});
+    padding-block-end: calc(var(--section-spacing-unit-size) * {{ block.settings.spacing_bottom | default: 2 }});
+    --products_per_row: {{ block.settings.columns_mobile | default: 2 }};
+  }
+  /* Hide dynamic Buy Now buttons inside collection product cards */
+  #shopify-section-{{ section.id }} .shopify-payment-button { display: none !important; }
+  /* Fixed width for Notify me button on collection cards */
+  #shopify-section-{{ section.id }} .js-notify-me-btn {
+    width: 152.45px !important;
+    flex: 0 0 152.45px !important;
+    display: inline-block;
+    text-align: center;
+  }
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} > div {
+      --products_per_row: {{ block.settings.columns_desktop | default: 4 }};
+    }
+  }
+  @media screen and (max-width: 750px) {
+    #shopify-section-{{ section.id }} .js-notify-me-btn {
+      width: 148.45px !important;
+    }
+  }
+
+  /* Enable Add to Cart button for this block - similar to best-seller-collection */
+  #shopify-section-{{ section.id }} .product-card__add-to-cart--button,
+  #shopify-section-{{ section.id }} .product-card__add-to-cart--button:hover {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* Custom header styling for this block */
+  .ai-collection-header-{{ block.id }} {
+    text-align: {{ block.settings.heading_alignment | default: 'center' }};
+    margin-bottom: 32px;
+  }
+
+  .ai-collection-title-{{ block.id }} {
+    font-size: {{ block.settings.heading_size | default: 32 }}px;
+    color: {{ block.settings.heading_color | default: '#111111' }};
+    margin: 0 0 12px;
+    font-weight: 600;
+  }
+
+  .ai-collection-description-{{ block.id }} {
+    font-size: {{ block.settings.description_size | default: 16 }}px;
+    color: {{ block.settings.description_color | default: '#666666' }};
+    margin: 0;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-collection-title-{{ block.id }} {
+      font-size: {{ block.settings.heading_size | times: 0.85 }}px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-collection-title-{{ block.id }} {
+      font-size: {{ block.settings.heading_size | times: 0.75 }}px;
+    }
+    .ai-collection-description-{{ block.id }} {
+      font-size: {{ block.settings.description_size | times: 0.9 }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="collection js-animation-fade-in color-{{ block.settings.color_scheme | default: 'scheme-1' }} {{ settings.card_product_layout }}">
+  <div class="container {{ block.settings.section_width | default: 'max-w-page' }} collection__container" id="ProductGridContainer-{{ block.id }}">
+
+    {% if block.settings.heading != blank or block.settings.description != blank %}
+      <div class="ai-collection-header-{{ block.id }}">
+        {% if block.settings.heading != blank %}
+          <h2 class="ai-collection-title-{{ block.id }}">{{ block.settings.heading }}</h2>
+        {% endif %}
+        {% if block.settings.description != blank %}
+          <div class="ai-collection-description-{{ block.id }}">{{ block.settings.description }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if block.settings.collection != blank %}
+      {% assign collection = block.settings.collection %}
+      {% assign products_to_show = block.settings.products_limit | default: 8 %}
+
+      <div class="collection-grid-container collection-grid-container--none js-collection-grid">
+        <div
+          class="collection__grid{% if block.settings.columns_mobile != '2' %} collection__grid-single{% endif %}"
+          id="product-grid-{{ block.id }}"
+          data-id="{{ block.id }}"
+          data-cols="{{ block.settings.columns_desktop | default: 4 }}"
+        >
+          {% if collection.products_count == 0 %}
+            <h3 class="collection__title collection__no-result text-center">
+              {{- 'collection.no_products' | t -}}
+            </h3>
+          {% else %}
+            {% for product_ref in collection.products limit: products_to_show %}
+              {% render 'card-product', product_ref: product_ref, section_id: block.id, product_index: forloop.index %}
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    {% else %}
+      <div class="collection-grid-container collection-grid-container--none">
+        <div class="collection__grid" id="product-grid-{{ block.id }}">
+          <div class="text-center">
+            <p>Select a collection to display products</p>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  (function() {
+    var gridContainer = document.getElementById('ProductGridContainer-{{ block.id }}');
+
+    function addNotifyButtons(root) {
+      if (!root) return;
+      var cards = root.querySelectorAll('product-card.product-card__sold-out');
+      cards.forEach(function(card) {
+        if (card.querySelector('.js-notify-me-btn')) return;
+        var linkEl = card.querySelector('[data-product-link]');
+        var href = linkEl ? linkEl.getAttribute('href') : '#';
+        var target = card.querySelector('.product-card__options') || card.querySelector('.product-card__content') || card;
+        var wrap = document.createElement('div');
+        wrap.className = 'product-card__notify';
+        wrap.innerHTML = '<a href="' + href + '" class="button button--filled js-notify-me-btn">Notify me</a>';
+        target.appendChild(wrap);
+      });
+    }
+
+    function observeGrid(root) {
+      if (!root || !('MutationObserver' in window)) return;
+      var mo = new MutationObserver(function(mutations) {
+        mutations.forEach(function(m) {
+          m.addedNodes && m.addedNodes.forEach(function(n) {
+            if (n.nodeType === 1) addNotifyButtons(n);
+          });
+        });
+      });
+      mo.observe(root, { childList: true, subtree: true });
+    }
+
+    addNotifyButtons(gridContainer || document);
+    observeGrid(gridContainer);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Collection grid",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Collection"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "min": 2,
+      "max": 24,
+      "step": 1,
+      "label": "Products to show",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Featured collection"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description color",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "options": [
+        {
+          "value": "max-w-page",
+          "label": "Page width"
+        },
+        {
+          "value": "max-w-fluid",
+          "label": "Full width"
+        }
+      ],
+      "default": "max-w-page",
+      "label": "Section width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-1",
+      "label": "Color scheme"
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Columns on desktop",
+      "options": [
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ],
+      "default": "4"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns on mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.global.header.settings.content",
+      "info": "t:sections.global.header.settings.info"
+    },
+    {
+      "type": "select",
+      "id": "spacing_top",
+      "label": "t:sections.global.settings.spacing.settings.spacing_top.label",
+      "options": [
+        {
+          "value": "0",
+          "label": "No"
+        },
+        {
+          "value": "1",
+          "label": "S"
+        },
+        {
+          "value": "2",
+          "label": "M"
+        },
+        {
+          "value": "4",
+          "label": "L"
+        },
+        {
+          "value": "6",
+          "label": "XL"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "select",
+      "id": "spacing_bottom",
+      "label": "t:sections.global.settings.spacing.settings.spacing_bottom.label",
+      "options": [
+        {
+          "value": "0",
+          "label": "No"
+        },
+        {
+          "value": "1",
+          "label": "S"
+        },
+        {
+          "value": "2",
+          "label": "M"
+        },
+        {
+          "value": "4",
+          "label": "L"
+        },
+        {
+          "value": "6",
+          "label": "XL"
+        }
+      ],
+      "default": "2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection grid"
+    }
+  ]
+}
+{% endschema %}

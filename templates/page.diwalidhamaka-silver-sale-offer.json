@@ -1,0 +1,365 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_banner": {
+      "type": "hero-banner",
+      "blocks": {
+        "slide_4w9XgK": {
+          "type": "slide",
+          "settings": {
+            "banner_layout": "hero-banner--full",
+            "color_scheme": "scheme-1",
+            "header_menu_text_color": "#ffffff",
+            "heading": "",
+            "subheading": "",
+            "subheading_link": "",
+            "text": "",
+            "button_link_1": "shopify://collections/all-products",
+            "button_link_1_type": "button",
+            "button_label_1": "View more",
+            "button_style_1": "button--filled",
+            "button_link_2": "shopify://collections/all-products",
+            "button_label_2": "View more",
+            "button_style_2": "button--outlined",
+            "content_position": "end",
+            "content_alignment": "center",
+            "image": "shopify://shop_images/diwali-silver-sparkle-sale-d_2079531b-5824-40bc-9e4f-b9abc5eafa79.webp",
+            "link": "shopify://collections/all-products",
+            "video_external": "",
+            "show_controls_on_video": false,
+            "enable_media_overlay_desktop": true,
+            "content_position_mobile": "center",
+            "content_alignment_mobile": "center",
+            "image_mobile": "shopify://shop_images/diwali-silver-sparkle-sale-m_1.webp",
+            "video_external_mobile": "",
+            "show_controls_on_video_mobile": false,
+            "enable_media_overlay_mobile": true
+          }
+        }
+      },
+      "block_order": [
+        "slide_4w9XgK"
+      ],
+      "settings": {
+        "slider_height": 100,
+        "slideshow_autoplay_interval": 6,
+        "show_slideshow_navigation": true,
+        "slideshow_navigation_position": "hero__swiper-buttons--center",
+        "color_scheme_arrows": "scheme-1",
+        "show_slideshow_pagination": true,
+        "slideshow_pagination_style": "style-1",
+        "floating_bar": false
+      }
+    },
+    "trust_indicators": {
+      "type": "trust-indicators",
+      "settings": {
+        "swipe_on_mobile": false,
+        "slideshow_autoplay_interval": 0,
+        "content_direction": "horizontal",
+        "content_alignment": "text-center",
+        "content_size": "h5",
+        "color_scheme_for_blocks": "scheme-1",
+        "section_width": "max-w-page",
+        "color_scheme": "scheme-1",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "campaign_overview": {
+      "type": "seo-content",
+      "settings": {
+        "section_layout": "normal",
+        "heading": "<strong>Diwali Silver Sparkle Sale</strong>",
+        "heading_size": "h2",
+        "text": "<p><strong>Diwali Silver Sparkle Sale</strong> is a festive offer celebrating <strong>Diwali</strong> with <strong>Tulips customers. Explore 10 lucky winners</strong> who won <strong>10-gram Silver Coin</strong>. </p><ul><li>Tejash Patel - (Surat)</li><li>Upparagowri Gowri - (Anantapur)</li><li>Mohinder Chadha - (Vadodara) </li><li>Dr. Navya Shree Suresha - (Mandya)</li><li>Shirley Motafaram - (Mumbai)</li><li>Darshana Bajaj - (Khargone) </li><li>Marmamita Basu - (Kolkata)</li><li>Deepa Gupta - (Noida)</li><li>Saurav Bharadwaj - (New Delhi)</li><li>Farha Naaz - (New Delhi)</li></ul><p></p>",
+        "content_alignment": "start",
+        "section_width": "max-w-page",
+        "color_scheme": "scheme-1",
+        "spacing_inner": "2",
+        "spacing_top": "4",
+        "spacing_bottom": "2"
+      }
+    },
+    "terms_accordion": {
+      "type": "accordions",
+      "settings": {
+        "heading": "Key Terms & Conditions",
+        "heading_size": "h2",
+        "section_width": "max-w-narrower",
+        "color_scheme": "scheme-1",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "legal_restrictions": {
+      "type": "seo-content",
+      "settings": {
+        "section_layout": "boxed",
+        "heading": "<strong>Legal Restrictions & State Exclusions</strong>",
+        "heading_size": "h3",
+        "text": "<p>People (Residents) from below mentioned states are restricted from taking part in this campaigns or require additional approvals. These include:</p><ul><li><strong>Assam</strong></li><li><strong>Nagaland</strong></li><li><strong>Sikkim</strong></li><li><strong>Tamil Nadu</strong></li><li><strong>Andhra Pradesh</strong></li><li><strong>Telangana</strong></li><li><strong>Odisha</strong></li></ul>",
+        "content_alignment": "start",
+        "section_width": "max-w-page",
+        "color_scheme": "scheme-1",
+        "spacing_inner": "2",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "legal_review": {
+      "type": "seo-content",
+      "disabled": true,
+      "settings": {
+        "section_layout": "boxed",
+        "heading": "<strong>Legal Review Recommendations</strong>",
+        "heading_size": "h3",
+        "text": "<p></p><ul><li>Clearly mention that the offer is not linked to any purchase value threshold.</li><li>Ensure a fair and transparent process for random winner selection. (<em><strong>random.org </strong></em><em>or </em><em><strong>wheelofnames.com can be used for winner selection</strong></em>)</li><li>Record the entire process via screen recording (for audit transparency).</li><li>Add disclaimers on marketing materials regarding ineligible states.</li><li>Ensure communication transparency for winner announcements.</li><li>Conduct legal vetting under the <strong>Consumer Protection Act, 2019</strong> and <strong>ASCI guidelines</strong> (<a href=\"https://www.google.com/search?sca_esv=f442afecdae9aeb2&rlz=1C1CHBD_enIN1151IN1151&sxsrf=AE3TifPgd9jlSgTOeGMiErpEW5dccgNoWA%3A1759918945550&q=Advertising+Standards+Council+of+India&sa=X&sqi=2&ved=2ahUKEwiL39T8sJSQAxXcyjgGHUuDA3gQxccNegQIHRAB&mstk=AUtExfAG6QkAdFgcgBwbapS9XYeHqpGH8WJ_VZbyI194Qz6Lo5RZ1XAbsaWGw1-As85XVFQ3hQIzHlifHaUM_xQSir1Ok5NbhHpikB9uCfZ0P1PZqgCefEYpIoihR6qXjvOU-aWfxaZiUDwKZI0wAdAOg5ithn4jBHLUGUVtQZRioaaYNvEg08_lcrEM0nSydGNvKKXINb0rL84nNmxNaLCTgpZcY906kK4IadGUYG-MS3JxKGoLvcn6Wo4FxtzI3qOnCfKDIJm5aiVAahBOQ6P-rqmN&csui=3\" title=\"https://www.google.com/search?sca_esv=f442afecdae9aeb2&rlz=1C1CHBD_enIN1151IN1151&sxsrf=AE3TifPgd9jlSgTOeGMiErpEW5dccgNoWA%3A1759918945550&q=Advertising+Standards+Council+of+India&sa=X&sqi=2&ved=2ahUKEwiL39T8sJSQAxXcyjgGHUuDA3gQxccNegQIHRAB&mstk=AUtExfAG6QkAdFgcgBwbapS9XYeHqpGH8WJ_VZbyI194Qz6Lo5RZ1XAbsaWGw1-As85XVFQ3hQIzHlifHaUM_xQSir1Ok5NbhHpikB9uCfZ0P1PZqgCefEYpIoihR6qXjvOU-aWfxaZiUDwKZI0wAdAOg5ithn4jBHLUGUVtQZRioaaYNvEg08_lcrEM0nSydGNvKKXINb0rL84nNmxNaLCTgpZcY906kK4IadGUYG-MS3JxKGoLvcn6Wo4FxtzI3qOnCfKDIJm5aiVAahBOQ6P-rqmN&csui=3\">Advertising Standards Council of India</a>).</li><li>Retain all campaign data and selection records for at least 90 days post-event.</li><li>Ensure communication transparency for winner<br/>announcements.</li></ul>",
+        "content_alignment": "start",
+        "section_width": "max-w-page",
+        "color_scheme": "scheme-1",
+        "spacing_inner": "2",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "conclusion": {
+      "type": "seo-content",
+      "disabled": true,
+      "settings": {
+        "section_layout": "boxed",
+        "heading": "<strong>Conclusion</strong>",
+        "heading_size": "h3",
+        "text": "<h3></h3><p>The <strong>\"Tulips Silver Sale\"</strong> initiative is crafted to enhance consumer engagement, celebrate the festive season, and strengthen brand loyalty. With proper compliance and transparency, this campaign can establish a strong precedent for future Tulips promotions.</p><p></p>",
+        "content_alignment": "start",
+        "section_width": "max-w-narrower",
+        "color_scheme": "scheme-1",
+        "spacing_inner": "2",
+        "spacing_top": "2",
+        "spacing_bottom": "4"
+      }
+    },
+    "accordions_CtJaPY": {
+      "type": "accordions",
+      "blocks": {
+        "topic_UMceW8": {
+          "type": "topic",
+          "settings": {
+            "is_open": true,
+            "title": "What is the Tulips Silver Giveaway Campaign?",
+            "text": "<p>The <em><strong>Tulips Silver Giveaway</strong></em><strong> </strong>is a special Diwali festive campaign by <strong>Tulips Hygiene</strong>, where customers shopping on the official website between <strong>13th and 31st October 2025</strong> stand a chance to <strong>win a 10-gram Silver Coin</strong>.<br/><br/>A total of <strong>10 lucky winners</strong> will be selected randomly after the campaign period.</p>",
+            "page": ""
+          }
+        },
+        "topic_gqfP3A": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "Do I need to make a minimum purchase to participate?",
+            "text": "<p>No minimum purchase value is required.<br/><br/>Every order placed on the official Tulips website during the campaign dates automatically qualifies for the lucky draw.</p>",
+            "page": ""
+          }
+        },
+        "topic_W6R4iA": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "Which purchases are eligible for this offer?",
+            "text": "<p>Only purchases made directly through the <strong>official Tulips website (</strong>www.tulipshygiene.store<strong>) </strong>between <strong>13th–31st October 2025</strong> are eligible.<br/><br/>Orders placed on other marketplaces (like Amazon, Flipkart, Meesho, etc.) will <strong>not </strong>be considered.</p>",
+            "page": ""
+          }
+        },
+        "topic_3hJxxQ": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "How are the winners selected?",
+            "text": "<p>After the campaign ends, all eligible orders will be compiled, and winners will be <strong>randomly selected</strong> using a verified  randomization tool such as random.org or <a href=\"https://www.wheelofnames.com\">wheelofnames.com</a>. The entire selection process will be <strong>screen recorded</strong> to ensure transparency and fairness<br/></p>",
+            "page": ""
+          }
+        },
+        "topic_HjyURG": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "When and how will the winners be announced?",
+            "text": "<p>Winners will be announced after <strong>31st October 2025</strong> through:</p><ul><li>Tulips official <strong>website</strong> (on the campaign page)</li><li>Tulips <strong>social media handles</strong> (Instagram, Facebook)</li></ul><p>Each winner will also receive a <strong>personal email or WhatsApp message</strong> from<br/>Tulips’ official communication channels confirming their win and dispatch<br/>details.</p>",
+            "page": ""
+          }
+        },
+        "topic_4UY9V6": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "How will the winners receive their silver coins?",
+            "text": "<p>Silver coins will be securely packed in <strong>Tulips-branded festive boxes</strong> and<br/>dispatched via <strong>insured courier service</strong>.<br/><br/>Winners will receive the <strong>tracking number</strong> once their package has been<br/>shipped.</p>",
+            "page": ""
+          }
+        },
+        "topic_E6J6Az": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "Can I exchange my silver coin for cash or another product?",
+            "text": "<p>No. The silver coin reward cannot be exchanged for cash, discounts, or any other products or services.</p>",
+            "page": ""
+          }
+        },
+        "topic_VAcABV": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "Who is not eligible to participate?",
+            "text": "<p>Employees,vendors, distributors, and partners of <strong>Tulips Hygiene Pvt. Ltd.</strong>, as well as their immediate family members, are <strong>not eligible</strong> to participate.</p>",
+            "page": ""
+          }
+        },
+        "topic_kbXyWk": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "Are there any state restrictions for this campaign?",
+            "text": "<p>Yes.Due to local prize promotion laws, this campaign is <strong>not valid</strong> for residents of the following states:<br/><br/><strong>Assam, Nagaland, Sikkim, Tamil Nadu, Andhra Pradesh, Telangana, and Odisha.</strong></p>",
+            "page": ""
+          }
+        },
+        "topic_EDfKLe": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "What if my order is cancelled or refunded?",
+            "text": "<p>Cancelled, returned, or refunded orders will <strong>not be considered</strong> for the lucky draw,<br/>as eligibility is based on valid, completed transactions only.</p>",
+            "page": ""
+          }
+        },
+        "topic_jyDiM7": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "Is there any fee or tax to claim the reward?",
+            "text": "<p>No. Winners will receive their prizes <strong>free of cost</strong>.<br/><br/>If any government-mandated tax (like TDS) applies, Tulips will comply with the<br/>required procedures accordingly.</p>",
+            "page": ""
+          }
+        },
+        "topic_QeQB99": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "How will my data be used?",
+            "text": "<p>Customer data collected during the campaign will be used <strong>only for campaign administration</strong> and internal verification purposes.<br/><br/>Tulips ensures that no personal data will be shared or sold to any third parties.</p>",
+            "page": ""
+          }
+        },
+        "topic_eqj3fQ": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "How does Tulips ensure fairness and transparency?",
+            "text": "<p>Tulips follows a <strong>transparent winner selection process</strong>:</p><ul><li>All eligible orders are compiled and verified.</li><li>Winners are chosen randomly via a fair online tool.</li><li>The process is screen recorded and retained for <strong>90 days post-campaign</strong>.</li><li>Results are announced publicly on official Tulips platforms.</li></ul>",
+            "page": ""
+          }
+        },
+        "topic_PjUC9K": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "Can Tulips modify or cancel the campaign?",
+            "text": "<p>Yes. Tulips reserves the right to <strong>modify, suspend, or withdraw</strong> the campaign at any time without prior notice, if required due to unforeseen circumstances, compliance issues, or force majeure events.</p>",
+            "page": ""
+          }
+        },
+        "topic_nXfTyL": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "How long will the campaign data be retained?",
+            "text": "<p>All campaign data, including order records, selection proof, and winner details, will be securely retained by Tulips for at least <strong>90 days post-event</strong> to ensure auditability and transparency.</p>",
+            "page": ""
+          }
+        },
+        "topic_39mX3M": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "How can I contact Tulips for more information?",
+            "text": "<p>For any campaign-related queries or support, you can reach out via:<br/><br/>📧 <strong>Email: </strong>wecare@tulipshygiene.com<br/><br/>🌐 <strong>Website: </strong>www.tulipshygiene.store</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "topic_UMceW8",
+        "topic_gqfP3A",
+        "topic_W6R4iA",
+        "topic_3hJxxQ",
+        "topic_HjyURG",
+        "topic_4UY9V6",
+        "topic_E6J6Az",
+        "topic_VAcABV",
+        "topic_kbXyWk",
+        "topic_EDfKLe",
+        "topic_jyDiM7",
+        "topic_QeQB99",
+        "topic_eqj3fQ",
+        "topic_PjUC9K",
+        "topic_nXfTyL",
+        "topic_39mX3M"
+      ],
+      "name": "t:sections.accordions.name",
+      "settings": {
+        "heading": "<strong>FREQUENTLY ASKED QUESTIONS</strong>",
+        "heading_size": "h4",
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "seo_content_cXwGrB": {
+      "type": "seo-content",
+      "settings": {
+        "section_layout": "normal",
+        "heading": "<strong>Key Terms & Conditions</strong>",
+        "heading_size": "h3",
+        "text": "<p>• Offer applicable on all purchases made from Tulips official website during the campaign. </p><p>• No minimum purchase value required for eligibility.</p><p>• Winners will be selected randomly and informed through official  communication. (Website Page/SocialMedia)</p><p>• The Silver Coin prize cannot be exchanged for cash or other products. </p><p>• Tulips reserves the right toalter or withdraw the campaign without notice. </p><p>• Employees, vendors, and affiliates of Tulips are not eligible. </p><p>• Participation implies acceptance of all campaign terms and conditions.</p>",
+        "content_alignment": "start",
+        "section_width": "max-w-page",
+        "color_scheme": "scheme-1",
+        "spacing_inner": "2",
+        "spacing_top": "4",
+        "spacing_bottom": "2"
+      }
+    },
+    "custom_liquid_RHpiCy": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.name",
+      "settings": {
+        "custom_liquid": "{% style %}\n  @media screen and (min-width: 750px) {\n    #shopify-section-{{ section.id }} {\n      margin-top: 30px;\n    \n    }\n  }\n{% endstyle %}",
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    }
+  },
+  "order": [
+    "hero_banner",
+    "trust_indicators",
+    "campaign_overview",
+    "terms_accordion",
+    "legal_restrictions",
+    "legal_review",
+    "conclusion",
+    "accordions_CtJaPY",
+    "seo_content_cXwGrB",
+    "custom_liquid_RHpiCy"
+  ]
+}

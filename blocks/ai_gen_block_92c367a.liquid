@@ -1,0 +1,244 @@
+{% doc %}
+  @prompt
+    create section where we can add banner images , same images for mobile, in mobile adapt ordinal image size landscape or portrait 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-banner-container-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    position: relative;
+  }
+
+  .ai-banner-wrapper-{{ ai_gen_id }} {
+    width: {{ block.settings.desktop_width_percent }}%;
+    margin: 0 auto;
+  }
+
+  .ai-banner-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-banner-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    background-color: #f4f4f4;
+    border-radius: {{ block.settings.border_radius }}px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+  }
+
+  .ai-banner-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    max-height: 400px;
+  }
+
+  .ai-banner-empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  {% if block.settings.enable_link %}
+    .ai-banner-link-{{ ai_gen_id }} {
+      display: block;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .ai-banner-link-{{ ai_gen_id }}:hover .ai-banner-image-{{ ai_gen_id }} {
+      opacity: {{ block.settings.hover_opacity | divided_by: 100.0 }};
+      transition: opacity 0.3s ease;
+    }
+  {% endif %}
+
+  @media screen and (max-width: 749px) {
+    .ai-banner-wrapper-{{ ai_gen_id }} {
+      width: 100%;
+    }
+
+    .ai-banner-image-{{ ai_gen_id }} {
+      {% if block.settings.mobile_aspect_ratio == 'original' %}
+        object-fit: contain;
+      {% elsif block.settings.mobile_aspect_ratio == 'landscape' %}
+        object-fit: cover;
+        aspect-ratio: 16 / 9;
+      {% elsif block.settings.mobile_aspect_ratio == 'portrait' %}
+        object-fit: cover;
+        aspect-ratio: 3 / 4;
+      {% elsif block.settings.mobile_aspect_ratio == 'square' %}
+        object-fit: cover;
+        aspect-ratio: 1 / 1;
+      {% endif %}
+    }
+
+    .ai-banner-placeholder-{{ ai_gen_id }} {
+      {% if block.settings.mobile_aspect_ratio == 'landscape' %}
+        aspect-ratio: 16 / 9;
+        min-height: auto;
+      {% elsif block.settings.mobile_aspect_ratio == 'portrait' %}
+        aspect-ratio: 3 / 4;
+        min-height: auto;
+      {% elsif block.settings.mobile_aspect_ratio == 'square' %}
+        aspect-ratio: 1 / 1;
+        min-height: auto;
+      {% endif %}
+    }
+  }
+{% endstyle %}
+
+<div class="ai-banner-container-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-banner-wrapper-{{ ai_gen_id }}">
+    {% if block.settings.enable_link and block.settings.banner_link != blank %}
+      <a href="{{ block.settings.banner_link }}" class="ai-banner-link-{{ ai_gen_id }}">
+        {% if block.settings.banner_image %}
+          <img
+            src="{{ block.settings.banner_image | image_url: width: 2000 }}"
+            alt="{{ block.settings.banner_image.alt | escape }}"
+            loading="lazy"
+            width="{{ block.settings.banner_image.width }}"
+            height="{{ block.settings.banner_image.height }}"
+            class="ai-banner-image-{{ ai_gen_id }}"
+          >
+        {% else %}
+          <div class="ai-banner-placeholder-{{ ai_gen_id }}">
+            {{ 'hero-apparel-1' | placeholder_svg_tag }}
+            <div class="ai-banner-empty-state-{{ ai_gen_id }}">
+              Next, add a banner image
+            </div>
+          </div>
+        {% endif %}
+      </a>
+    {% else %}
+      {% if block.settings.banner_image %}
+        <img
+          src="{{ block.settings.banner_image | image_url: width: 2000 }}"
+          alt="{{ block.settings.banner_image.alt | escape }}"
+          loading="lazy"
+          width="{{ block.settings.banner_image.width }}"
+          height="{{ block.settings.banner_image.height }}"
+          class="ai-banner-image-{{ ai_gen_id }}"
+        >
+      {% else %}
+        <div class="ai-banner-placeholder-{{ ai_gen_id }}">
+          {{ 'hero-apparel-1' | placeholder_svg_tag }}
+          <div class="ai-banner-empty-state-{{ ai_gen_id }}">
+            Next, add a banner image
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Banner image",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner image"
+    },
+    {
+      "type": "select",
+      "id": "mobile_aspect_ratio",
+      "label": "Mobile aspect ratio",
+      "options": [
+        {
+          "value": "original",
+          "label": "Original"
+        },
+        {
+          "value": "landscape",
+          "label": "Landscape (16:9)"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait (3:4)"
+        },
+        {
+          "value": "square",
+          "label": "Square (1:1)"
+        }
+      ],
+      "default": "original",
+      "info": "Adapts the image size for mobile devices"
+    },
+    {
+      "type": "header",
+      "content": "Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_link",
+      "label": "Enable link",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "banner_link",
+      "label": "Banner link"
+    },
+    {
+      "type": "range",
+      "id": "hover_opacity",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Hover opacity",
+      "default": 90,
+      "info": "Only applies when link is enabled"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner image"
+    }
+  ],
+  "tag": null
+}
+{% endschema %}

@@ -1,0 +1,266 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "page_banner_6yAtaC": {
+      "type": "page-banner",
+      "custom_css": [
+        ".h2 {font-family: \"TT Neoris\", sans-serif; font-weight: 700; letter-spacing: 1.2px; font-size: 44px;}"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h2",
+        "text": "",
+        "show_default_description": false,
+        "show_on_description": "desktop",
+        "content_position": "center",
+        "content_alignment": "center",
+        "media_position": "background",
+        "page_menu": "",
+        "enable_breadcrumbs": false,
+        "section_height": "33svh",
+        "video_external": "",
+        "show_controls_on_video": false,
+        "section_height_mobile": "50svh",
+        "video_external_mobile": "",
+        "show_controls_on_video_mobile": false,
+        "section_width": "max-w-narrow",
+        "color_scheme": "scheme-7",
+        "color_scheme_for_media": "",
+        "image_blur_effect": false,
+        "spacing_top": "2",
+        "spacing_bottom": "6"
+      }
+    },
+    "banner_below_img_E9Cpmm": {
+      "type": "banner-below-img",
+      "settings": {
+        "wave_image": "shopify://shop_images/Group_7381_2.png"
+      }
+    },
+    "tulips_section_1_eqpKQk": {
+      "type": "tulips-section-1",
+      "custom_css": [
+        "@media (max-width: 768px) {.tulips-grid {display: grid; gap: 15px; grid-template-columns: 1fr; justify-items: center; padding: 10px 0; } .text-container {margin-top: -3%;}}"
+      ],
+      "settings": {
+        "title": "Innovating Hygiene Since 1999",
+        "description": "Tulips, under Suparshva Swabs (I), is a pioneer in personal hygiene products across South Asia. Since 1999, we've championed quality, accessibility, and innovation in cotton-based hygiene solutions.",
+        "icon_1": "shopify://shop_images/Group_1.png",
+        "label_1": "Innovation & Quality",
+        "para1_1": "<p>100% in-house production with state-of-the-art facilities.<br/>International certifications & global benchmarks.<br/></p>",
+        "icon_2": "shopify://shop_images/Frame_3.png",
+        "label_2": "Sustainable Manufacturin",
+        "para1_2": "<p>Solar-powered plants & backward integration of raw materials.<br/>One of the lowest-cost, high-quality manufacturers globally.</p>",
+        "icon_3": "shopify://shop_images/Vector_8.png",
+        "label_3": "Global Reach",
+        "para1_3": "<p>Exported to over 15 countries across major hygiene brands.<br/>Recognized for product quality and consistency worldwide.</p>",
+        "para2_3": ""
+      }
+    },
+    "03a45767-3819-40b4-a750-ab1add481edc": {
+      "type": "dual-tiles",
+      "blocks": {
+        "template--18086433161531__03a45767-3819-40b4-a750-ab1add481edc-1677165430713b18f7-0": {
+          "type": "tile",
+          "settings": {
+            "show_on": "both",
+            "color_scheme": "",
+            "custom_background_color": "",
+            "heading": "Heading for Dual Content Tiles",
+            "heading_size": "h3",
+            "text": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "button--outlined",
+            "product": "",
+            "product_width": 24,
+            "show_other_elements_with_product": true,
+            "aspect_ratio": "auto",
+            "vertical_position": "stretch",
+            "content_position": "justify-center",
+            "content_alignment": "text-center align-center",
+            "product_position": "between",
+            "video_external": "",
+            "show_controls_on_video": false,
+            "aspect_ratio_mobile": "auto",
+            "content_alignment_mobile": "text-center--mobile align-center--mobile",
+            "content_position_mobile": "justify-center--mobile",
+            "product_position_mobile": "between",
+            "video_external_mobile": "",
+            "show_controls_on_video_mobile": false,
+            "spacing_inner": "3"
+          }
+        },
+        "template--18086433161531__03a45767-3819-40b4-a750-ab1add481edc-1677165430713b18f7-1": {
+          "type": "tile",
+          "settings": {
+            "show_on": "both",
+            "color_scheme": "",
+            "custom_background_color": "",
+            "heading": "Heading for Dual Content Tiles",
+            "heading_size": "h3",
+            "text": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "button--outlined",
+            "product": "",
+            "product_width": 24,
+            "show_other_elements_with_product": true,
+            "aspect_ratio": "auto",
+            "vertical_position": "stretch",
+            "content_position": "justify-center",
+            "content_alignment": "text-center align-center",
+            "product_position": "between",
+            "video_external": "",
+            "show_controls_on_video": false,
+            "aspect_ratio_mobile": "auto",
+            "content_alignment_mobile": "text-center--mobile align-center--mobile",
+            "content_position_mobile": "justify-center--mobile",
+            "product_position_mobile": "between",
+            "video_external_mobile": "",
+            "show_controls_on_video_mobile": false,
+            "spacing_inner": "3"
+          }
+        }
+      },
+      "block_order": [
+        "template--18086433161531__03a45767-3819-40b4-a750-ab1add481edc-1677165430713b18f7-0",
+        "template--18086433161531__03a45767-3819-40b4-a750-ab1add481edc-1677165430713b18f7-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "section_layout": "seperated",
+        "block_size": "half",
+        "block_order_mobile": false,
+        "color_scheme": "scheme-5",
+        "section_width": "max-w-page",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "hero_banner_HRLgTV": {
+      "type": "hero-banner",
+      "blocks": {
+        "slide_XjbAhP": {
+          "type": "slide",
+          "settings": {
+            "banner_layout": "hero-banner--full",
+            "color_scheme": "scheme-1",
+            "header_menu_text_color": "#ffffff",
+            "heading": "",
+            "subheading": "",
+            "subheading_link": "",
+            "text": "",
+            "button_link_1": "/",
+            "button_link_1_type": "button",
+            "button_label_1": "",
+            "button_style_1": "button--filled",
+            "button_link_2": "/",
+            "button_label_2": "View more",
+            "button_style_2": "button--outlined",
+            "content_position": "center",
+            "content_alignment": "center",
+            "link": "",
+            "video_external": "https://youtu.be/6OF5sBFX0YM?si=_4tL5y_QQBnZqjYo",
+            "show_controls_on_video": false,
+            "enable_media_overlay_desktop": true,
+            "content_position_mobile": "center",
+            "content_alignment_mobile": "center",
+            "video_external_mobile": "",
+            "show_controls_on_video_mobile": false,
+            "enable_media_overlay_mobile": true
+          }
+        }
+      },
+      "block_order": [
+        "slide_XjbAhP"
+      ],
+      "name": "t:sections.hero-banner.name",
+      "settings": {
+        "slider_height": 50,
+        "slideshow_autoplay_interval": 6,
+        "show_slideshow_navigation": true,
+        "slideshow_navigation_position": "hero__swiper-buttons--start",
+        "color_scheme_arrows": "",
+        "show_slideshow_pagination": true,
+        "slideshow_pagination_style": "style-1",
+        "floating_bar": false
+      }
+    },
+    "brandabout_deiWRi": {
+      "type": "brandabout",
+      "blocks": {
+        "text_BXirnb": {
+          "type": "text",
+          "settings": {
+            "text": "Today TULIPS products are selling pan-India, with a wide network of distributors, dealers catering to more than 30,000 retail outlets comprising of Chemists, Groceries, Kirana shops, Modern retail supermarkets, standalone supermarkets throughout India."
+          }
+        },
+        "text_Gagfpf": {
+          "type": "text",
+          "settings": {
+            "text": "TULIPS is also present on all the major e-commerce portals like Amazon, Flipkart, Snapdeal & Paytm. It is undoubtedly the most liked brand in all its categories. A 100% positive product feedback, reflects the liking of Indian consumer at large, for TULIPS brand."
+          }
+        },
+        "text_fqEWMW": {
+          "type": "text",
+          "settings": {
+            "text": "TULIPS product range has given Indian consumer a dependable range of personal hygiene products, which are equivalent to the best worldwide as it comes with a promise of unmatched quality at an amazingly low prices."
+          }
+        }
+      },
+      "block_order": [
+        "text_BXirnb",
+        "text_Gagfpf",
+        "text_fqEWMW"
+      ],
+      "disabled": true,
+      "settings": {
+        "brand_image": "shopify://shop_images/Image_Place_Holder_1.png",
+        "title": "About Brand Tulips Hygiene",
+        "description": "<p>TULIPS is India’s leading & fastest growing brand for Cotton & Wood based personal hygiene products. It had single handedly, created a mass market segment of Cotton-based products like Cotton swabs, Cotton balls & Cotton pads in India, by its VALUE FOR MONEY approach & making the product available at all formats of retail, in last 10 years.<br/><br/></p>",
+        "button_1_text": "Learn More",
+        "button_1_link": "",
+        "button_2_text": "Contact Us",
+        "button_2_link": ""
+      }
+    },
+    "corevalues_about_TEwaNT": {
+      "type": "corevalues-about",
+      "custom_css": [
+        ".our-core-values-container {margin-bottom: 10%;}",
+        "h3 {font-family: \"TheSeasonsLT\", sans-serif;}"
+      ],
+      "settings": {
+        "section_heading": "Our Core Values",
+        "section_subtext": "We seek a world where our products are made with care and delivered to everyone for a healthy, hygienic experience. While progressing towards attaining economic growth as an organization, we keep a check on our social responsibility.",
+        "precision_medicine_icon": "shopify://shop_images/Group_2.png",
+        "precision_medicine_title": "Care",
+        "precision_medicine_desc": "We aim to deliver best of products to our customers making sure that they are harmless for the customer and the touch delivers an experience they would want to stick to. Our quality checks make sure that our brand lives up to all expectations.",
+        "early_detection_icon": "shopify://shop_images/Layer_1_1.png",
+        "early_detection_title": "Consistency",
+        "early_detection_desc": "We believe in carrying out development that is sustainable and creates a lasting impact on our customers as well as our partners in measurable ways. With our rock solid values and supporting team, we aim to hold ourselves to high ethical standards and respect the laws of our country.",
+        "immunotherapy_icon": "shopify://shop_images/Vector_9.png",
+        "immunotherapy_title": "Contribution",
+        "immunotherapy_desc": "Not measuring our success just by our monetary gains, we make sure that our corporate social responsibility is an important part of our decisions as well as our actions. Our values are an important part of our action plan which are reflected in our guiding principles."
+      }
+    }
+  },
+  "order": [
+    "page_banner_6yAtaC",
+    "banner_below_img_E9Cpmm",
+    "tulips_section_1_eqpKQk",
+    "03a45767-3819-40b4-a750-ab1add481edc",
+    "hero_banner_HRLgTV",
+    "brandabout_deiWRi",
+    "corevalues_about_TEwaNT"
+  ]
+}

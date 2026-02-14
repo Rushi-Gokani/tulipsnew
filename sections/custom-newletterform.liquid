@@ -1,0 +1,261 @@
+<section class="subscribe-instagram">
+  <div class="subscribe">
+    <p>Subscribe to <span>our newsletter</span> and get updates on <span>new arrival</span></p>
+
+    <!-- 🛠 Cleaned-up and working subscription form -->
+    <form method="post" action="/contact#subscribe-success" class="subscribe-box">
+      <input type="hidden" name="form_type" value="customer">
+      <input type="hidden" name="utf8" value="✓">
+      <input name="contact[email]" type="email" placeholder="your email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
+
+    <!-- ✅ Optional success message -->
+    {% if form.posted_successfully? %}
+      <p id="subscribe-success" class="success-message">Thank you for subscribing!</p>
+    {% endif %}
+  </div>
+
+  <!-- Divider Line -->
+  <div class="divider">&nbsp;</div>
+
+  <div class="instagram">
+    <h5 style="color:#F0652F;">Follow us on Instagram</h5>
+    <div class="instagram-grid">
+      {% for i in (1..4) %}
+        {% assign image_id = 'instagram_image_' | append: i %}
+        {% assign link_id = 'instagram_link_' | append: i %}
+        {% if section.settings[image_id] != blank %}
+          <div class="insta-img">
+            <a href="{{ section.settings[link_id] }}" target="_blank" rel="noopener noreferrer">
+              <img src="{{ section.settings[image_id] | img_url: '200x200' }}" alt="Instagram Post">
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+    "name": "Subscribe & Instagram",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "instagram_image_1",
+            "label": "Instagram Image 1"
+        },
+        {
+            "type": "url",
+            "id": "instagram_link_1",
+            "label": "Instagram Link 1"
+        },
+        {
+            "type": "image_picker",
+            "id": "instagram_image_2",
+            "label": "Instagram Image 2"
+        },
+        {
+            "type": "url",
+            "id": "instagram_link_2",
+            "label": "Instagram Link 2"
+        },
+        {
+            "type": "image_picker",
+            "id": "instagram_image_3",
+            "label": "Instagram Image 3"
+        },
+        {
+            "type": "url",
+            "id": "instagram_link_3",
+            "label": "Instagram Link 3"
+        },
+        {
+            "type": "image_picker",
+            "id": "instagram_image_4",
+            "label": "Instagram Image 4"
+        },
+        {
+            "type": "url",
+            "id": "instagram_link_4",
+            "label": "Instagram Link 4"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Subscribe & Instagram",
+            "category": "Custom Sections"
+        }
+    ]
+}
+{% endschema %}
+
+<style>
+    .success-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+      /* Parent Container */
+      .subscribe-instagram {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          max-width: 1100px;
+          margin: auto;
+          padding: 60px 10px; /* Added padding for mobile responsiveness */
+          gap: 40px;
+         margin-top: 5%;
+        margin-bottom: 15%;
+
+      }
+
+      /* Newsletter Section */
+      .subscribe {
+          flex: 1;
+      }
+
+      .subscribe p {
+          font-size: 30px;
+          color: #333;
+      }
+
+      .subscribe span {
+          color:  #F0652F;
+          font-weight: bold;
+      }
+
+      /* Subscription Box */
+      .subscribe-box {
+          display: flex;
+          align-items: center;
+          margin-top: 10px;
+          border: 1px solid  #F0652F;
+    ;
+          border-radius: 25px;
+          overflow: hidden;
+          background: white;
+          width: 100%;
+          max-width: 400px;
+          padding: 5px;
+      }
+
+      .subscribe-box input {
+          flex: 1;
+          padding: 12px 15px;
+          border: none;
+          outline: none;
+          font-size: 16px;
+          min-width: 200px;
+      }
+
+      .subscribe-box button {
+          background-color: #F0652F;
+          color: white;
+          border: none;
+          padding: 12px 20px;
+          font-size: 16px;
+          cursor: pointer;
+          border-radius: 25px;
+          transition: background 0.3s ease-in-out;
+          min-width: 100px;
+          margin-left: 5px; /* Space between input and button */
+      }
+
+      .subscribe-box button:hover {
+          background-color: #d35400;
+      }
+
+      /* Vertical Divider */
+      .divider {
+          width: 2px; /* Thin vertical line */
+          height: 200px; /* Adjust height as needed */
+          background-color: black;
+          margin: 0 20px; /* Spacing between sections */
+      }
+
+      /* Instagram Section */
+      .instagram-grid {
+        margin-top:10px;
+          display: grid;
+          grid-template-columns: repeat(4, 1fr); /* Four equal columns */
+          gap: 10px; /* Space between images */
+      }
+
+      .insta-img {
+          width: 100%; /* Full width of the grid cell */
+          aspect-ratio: 1/1; /* Ensures a perfect square */
+          overflow: hidden; /* Prevents image overflow */
+          display: flex; /* Centers image */
+          align-items: center;
+          justify-content: center;
+      }
+
+      .insta-img img {
+          width: 100%; /* Make images responsive */
+          height: 100%;
+          object-fit: cover; /* Ensures images fill the box without stretching */
+          border-radius: 5px; /* Optional: for rounded corners */
+      }
+
+      /* Responsive Design */
+      @media screen and (max-width: 1024px) {
+          .subscribe-instagram {
+              flex-direction: column;
+              text-align: center;
+              gap: 30px;
+          }
+
+          .subscribe, .instagram {
+              width: 100%;
+          }
+
+          .subscribe-box {
+              max-width: 400px;
+              margin: auto;
+          }
+
+          .divider {
+              display: none; /* Hide divider on smaller screens */
+          }
+
+          .instagram-grid {
+              grid-template-columns: repeat(2, 1fr);
+              justify-content: center;
+              gap: 10px;
+          }
+      }
+
+      @media screen and (max-width: 600px) {
+          .subscribe-instagram {
+              padding: 40px 15px;
+          }
+
+          .subscribe p, .instagram p {
+              font-size: 16px;
+          }
+
+          .subscribe-box {
+              flex-direction: column;
+              border-radius: 10px;
+              overflow: visible;
+          }
+
+          .subscribe-box input {
+              width: 100%;
+              border-radius: 10px 10px 0 0;
+          }
+
+          .subscribe-box button {
+              width: 100%;
+              border-radius: 0 0 10px 10px;
+          }
+
+          .instagram-grid {
+              grid-template-columns: repeat(2, 1fr);
+              gap: 8px;
+          }
+      }
+</style>

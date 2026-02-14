@@ -1,0 +1,298 @@
+/* Collection Product Button Color Schemes */
+
+/* Default Theme Colors (Base) */
+.collection-buttons-default .custom_styled_button {
+  color: var(--color-button-outline) !important;
+  background: transparent !important;
+  border: 1px solid var(--color-button-outline) !important;
+}
+
+.collection-buttons-default .custom_styled_button:hover {
+  background: var(--color-button-outline) !important;
+  color: var(--color-button-outline-label) !important;
+}
+
+.collection-buttons-default .custom_styled_button svg path {
+  stroke: var(--color-button-outline) !important;
+}
+
+.collection-buttons-default .custom_styled_button:hover svg path {
+  stroke: var(--color-button-outline-label) !important;
+}
+
+.collection-buttons-default .shopify-payment-button__button {
+  background: var(--color-button) !important;
+  color: var(--color-button-label) !important;
+  border-color: var(--color-button) !important;
+}
+
+.collection-buttons-default .shopify-payment-button__button:hover {
+  background: var(--color-button-hover) !important;
+  border-color: var(--color-button-hover) !important;
+}
+
+/* Blue Theme */
+.collection-buttons-blue .custom_styled_button {
+  color: #0047BB !important;
+  background: transparent !important;
+  border: 1px solid #0047BB !important;
+}
+
+.collection-buttons-blue .custom_styled_button:hover {
+  background: #0047BB !important;
+  color: #ffffff !important;
+}
+
+.collection-buttons-blue .custom_styled_button svg path {
+  stroke: #0047BB !important;
+}
+
+.collection-buttons-blue .custom_styled_button:hover svg path {
+  stroke: #ffffff !important;
+}
+
+.collection-buttons-blue .shopify-payment-button__button {
+  background: #0047BB !important;
+  color: #ffffff !important;
+  border-color: #0047BB !important;
+}
+
+.collection-buttons-blue .shopify-payment-button__button:hover {
+  background: #003a8f !important;
+  border-color: #003a8f !important;
+}
+
+/* Green Theme */
+.collection-buttons-green .custom_styled_button {
+  color: #799C4C !important;
+  background: transparent !important;
+  border: 1px solid #799C4C !important;
+}
+
+.collection-buttons-green .custom_styled_button:hover {
+  background: #799C4C !important;
+  color: #ffffff !important;
+}
+
+.collection-buttons-green .custom_styled_button svg path {
+  stroke: #799C4C !important;
+}
+
+.collection-buttons-green .custom_styled_button:hover svg path {
+  stroke: #ffffff !important;
+}
+
+.collection-buttons-green .shopify-payment-button__button {
+  background: #799C4C !important;
+  color: #ffffff !important;
+  border-color: #799C4C !important;
+}
+
+.collection-buttons-green .shopify-payment-button__button:hover {
+  background: #6b8a42 !important;
+  border-color: #6b8a42 !important;
+}
+
+/* Teal Theme */
+.collection-buttons-teal .custom_styled_button {
+  color: #006f62 !important;
+  background: transparent !important;
+  border: 1px solid #006f62 !important;
+}
+
+.collection-buttons-teal .custom_styled_button:hover {
+  background: #006f62 !important;
+  color: #ffffff !important;
+}
+
+.collection-buttons-teal .custom_styled_button svg path {
+  stroke: #006f62 !important;
+}
+
+.collection-buttons-teal .custom_styled_button:hover svg path {
+  stroke: #ffffff !important;
+}
+
+.collection-buttons-teal .shopify-payment-button__button {
+  background: #006f62 !important;
+  color: #ffffff !important;
+  border-color: #006f62 !important;
+}
+
+.collection-buttons-teal .shopify-payment-button__button:hover {
+  background: #005a4f !important;
+  border-color: #005a4f !important;
+}
+
+/* Dark Green Theme */
+.collection-buttons-darkgreen .custom_styled_button {
+  color: #00674F !important;
+  background: transparent !important;
+  border: 1px solid #00674F !important;
+}
+
+.collection-buttons-darkgreen .custom_styled_button:hover {
+  background: #00674F !important;
+  color: #ffffff !important;
+}
+
+.collection-buttons-darkgreen .custom_styled_button svg path {
+  stroke: #00674F !important;
+}
+
+.collection-buttons-darkgreen .custom_styled_button:hover svg path {
+  stroke: #ffffff !important;
+}
+
+.collection-buttons-darkgreen .shopify-payment-button__button {
+  background: #00674F !important;
+  color: #ffffff !important;
+  border-color: #00674F !important;
+}
+
+.collection-buttons-darkgreen .shopify-payment-button__button:hover {
+  background: #005242 !important;
+  border-color: #005242 !important;
+}
+
+/* Purple Theme */
+.collection-buttons-purple .custom_styled_button {
+  color: #6f42c1 !important;
+  background: transparent !important;
+  border: 1px solid #6f42c1 !important;
+}
+
+.collection-buttons-purple .custom_styled_button:hover {
+  background: #6f42c1 !important;
+  color: #ffffff !important;
+}
+
+.collection-buttons-purple .custom_styled_button svg path {
+  stroke: #6f42c1 !important;
+}
+
+.collection-buttons-purple .custom_styled_button:hover svg path {
+  stroke: #ffffff !important;
+}
+
+.collection-buttons-purple .shopify-payment-button__button {
+  background: #6f42c1 !important;
+  color: #ffffff !important;
+  border-color: #6f42c1 !important;
+}
+
+.collection-buttons-purple .shopify-payment-button__button:hover {
+  background: #5a32a3 !important;
+  border-color: #5a32a3 !important;
+}
+
+/* Red Theme */
+.collection-buttons-red .custom_styled_button {
+  color: #dc3545 !important;
+  background: transparent !important;
+  border: 1px solid #dc3545 !important;
+}
+
+.collection-buttons-red .custom_styled_button:hover {
+  background: #dc3545 !important;
+  color: #ffffff !important;
+}
+
+.collection-buttons-red .custom_styled_button svg path {
+  stroke: #dc3545 !important;
+}
+
+.collection-buttons-red .custom_styled_button:hover svg path {
+  stroke: #ffffff !important;
+}
+
+.collection-buttons-red .shopify-payment-button__button {
+  background: #dc3545 !important;
+  color: #ffffff !important;
+  border-color: #dc3545 !important;
+}
+
+.collection-buttons-red .shopify-payment-button__button:hover {
+  background: #c82333 !important;
+  border-color: #c82333 !important;
+}
+
+/* Custom Colors (Applied via inline styles) */
+.collection-buttons-custom .custom_styled_button {
+  background: transparent !important;
+  border: 1px solid !important;
+}
+
+.collection-buttons-custom .shopify-payment-button__button {
+  border: none !important;
+}
+
+/* Button Layout Improvements */
+.mobile_hidden_atc {
+  display: flex !important;
+  gap: 10px !important;
+  align-items: stretch !important;
+  flex-wrap: wrap !important;
+}
+
+.mobile_hidden_atc > div {
+  flex: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.mobile_hidden_atc .custom_styled_button {
+  width: 100% !important;
+  justify-content: center !important;
+}
+
+.mobile_hidden_atc .shopify-payment-button {
+  width: 100% !important;
+}
+
+.mobile_hidden_atc .shopify-payment-button__button {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .mobile_hidden_atc {
+    flex-direction: row !important;
+    gap: 8px !important;
+  }
+  .mobile_hidden_atc .shopify-payment-button__button{
+    padding:1.2rem !important;
+  }
+  .mobile_hidden_atc > div {
+    width: 100% !important;
+  }
+}
+
+/* Button States */
+.custom_styled_button:disabled,
+.shopify-payment-button__button:disabled {
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+}
+
+/* Loading States */
+.custom_styled_button .loading__spinner,
+.shopify-payment-button__button .loading__spinner {
+  display: none !important;
+}
+
+.custom_styled_button.loading .loading__spinner,
+.shopify-payment-button__button.loading .loading__spinner {
+  display: inline-block !important;
+}
+
+/* Focus States for Accessibility */
+.custom_styled_button:focus,
+.shopify-payment-button__button:focus {
+  outline: 2px solid currentColor !important;
+  outline-offset: 2px !important;
+} 

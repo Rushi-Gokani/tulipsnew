@@ -1,0 +1,56 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-search-banner",
+      "settings": {
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "main": {
+      "type": "main-search",
+      "settings": {
+        "show_top_border_for_utilities_bar": false,
+        "enable_products_count": true,
+        "enable_sorting": true,
+        "filters": "drawer",
+        "products_per_row": "4",
+        "products_per_row_mobile": "2",
+        "products_per_page": 12,
+        "pagination_style": "default",
+        "enable_infinity_scroll": false,
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "0",
+        "spacing_bottom": "2"
+      }
+    },
+    "custom_liquid_QYqJdD": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.name",
+      "settings": {
+        "custom_liquid": "{% style %}\n  @media screen and (min-width: 750px) {\n    #shopify-section-{{ section.id }} {\n      margin-top: 5px;\n    \n    }\n  }\n{% endstyle %}",
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "main",
+    "custom_liquid_QYqJdD"
+  ]
+}

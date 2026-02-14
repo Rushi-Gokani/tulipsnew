@@ -1,0 +1,120 @@
+<section class="banner-badges-section">
+  <div class="section-box-wrapper">
+    {% assign banner = product.metafields.scraft.product_page_banners.value %}
+
+    {% if banner %}
+      {% if banner.banner_1 %}
+        <div class="full-width-image">
+          <img src="{{ banner.banner_1 | image_url }}" alt="Banner 1">
+        </div>
+      {% endif %}
+
+      {% if banner.banner_2 %}
+        <div class="full-width-image">
+          <img src="{{ banner.banner_2 | image_url }}" alt="Banner 2">
+        </div>
+      {% endif %}
+
+      {% if banner.banner_3 %}
+        <div class="full-width-image">
+          <img src="{{ banner.banner_3 | image_url }}" alt="Banner 3">
+        </div>
+      {% endif %}
+
+      {% if banner.badge_1 or banner.badge_2 or banner.badge_3 %}
+        <div class="badge-row-wrapper">
+          <div class="badge-row-container">
+            {% if banner.badge_1 %}
+              <div class="badge-item">
+                <img src="{{ banner.badge_1 | image_url: width: 200 }}" alt="Badge 1">
+              </div>
+            {% endif %}
+            {% if banner.badge_2 %}
+              <div class="badge-item">
+                <img src="{{ banner.badge_2 | image_url: width: 200 }}" alt="Badge 2">
+              </div>
+            {% endif %}
+            {% if banner.badge_3 %}
+              <div class="badge-item">
+                <img src="{{ banner.badge_3 | image_url: width: 200 }}" alt="Badge 3">
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if banner.banner_4 %}
+        <div class="full-width-image">
+          <img src="{{ banner.banner_4 | image_url }}" alt="Banner 4">
+        </div>
+      {% endif %}
+
+      {% if banner.banner_5 %}
+        <div class="full-width-image">
+          <img src="{{ banner.banner_5 | image_url }}" alt="Banner 5">
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Page Banners",
+  "tag": "section",
+  "presets": [
+    {
+      "name": "Product Page Banners",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .banner-badges-section {
+    padding: 40px 0;
+
+  }
+
+  .section-box-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+
+
+
+  }
+
+  .full-width-image img {
+    width: 100%;
+    height: auto;
+
+  }
+
+  .badge-row-wrapper {
+    margin: 20px auto;
+    padding: 0 20px;
+  }
+
+  .badge-row-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap:nowrap;
+  }
+
+  .badge-item {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .badge-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+</style>

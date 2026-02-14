@@ -1,0 +1,431 @@
+{% doc %}
+  @prompt
+    Make a Video section for youtube url featch,In desltiop & mobile both show same ration without scrale up in Mobile. Also give setting to show control or not, Vidoe should be audable  
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-youtube-video-{{ ai_gen_id }} {
+    width: 100%;
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+    margin-top: {{ block.settings.margin_top | default: 0 }}px;
+    margin-bottom: {{ block.settings.margin_bottom | default: 0 }}px;
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    overflow: hidden;
+  }
+
+  .ai-youtube-video-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: {{ block.settings.aspect_ratio }}%;
+    background-color: #000000;
+  }
+
+  .ai-youtube-video-iframe-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .ai-youtube-video-placeholder-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .ai-youtube-video-placeholder-{{ ai_gen_id }} svg {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+  }
+
+  .ai-youtube-video-placeholder-text-{{ ai_gen_id }} {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .ai-youtube-video-placeholder-subtext-{{ ai_gen_id }} {
+    font-size: 14px;
+    opacity: 0.7;
+  }
+
+  {% if block.settings.heading != blank %}
+    .ai-youtube-video-heading-{{ ai_gen_id }} {
+      text-align: {{ block.settings.text_alignment }};
+      margin-bottom: {{ block.settings.heading_spacing }}px;
+      color: {{ block.settings.text_color }};
+      font-size: {{ block.settings.heading_size }}px;
+      font-weight: 600;
+      margin-top: 0;
+    }
+  {% endif %}
+
+  {% if block.settings.description != blank %}
+    .ai-youtube-video-description-{{ ai_gen_id }} {
+      text-align: {{ block.settings.text_alignment }};
+      margin-top: {{ block.settings.description_spacing }}px;
+      color: {{ block.settings.text_color }};
+      font-size: {{ block.settings.description_size }}px;
+      line-height: 1.5;
+    }
+  {% endif %}
+
+  @media screen and (max-width: 749px) {
+    .ai-youtube-video-{{ ai_gen_id }} {
+      max-width: 100%;
+    }
+    
+    {% if block.settings.heading != blank %}
+      .ai-youtube-video-heading-{{ ai_gen_id }} {
+        font-size: {{ block.settings.heading_size | times: 0.8 }}px;
+      }
+    {% endif %}
+    
+    {% if block.settings.description != blank %}
+      .ai-youtube-video-description-{{ ai_gen_id }} {
+        font-size: {{ block.settings.description_size | times: 0.9 }}px;
+      }
+    {% endif %}
+  }
+{% endstyle %}
+
+<youtube-video-{{ ai_gen_id }}
+  class="ai-youtube-video-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+  data-video-url="{{ block.settings.youtube_url }}"
+  data-show-controls="{{ block.settings.show_controls }}"
+  data-autoplay="{{ block.settings.autoplay }}"
+  data-mute="{{ block.settings.mute }}"
+  data-loop="{{ block.settings.loop }}"
+>
+  {% if block.settings.heading != blank %}
+    <h2 class="ai-youtube-video-heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+  {% endif %}
+
+  <div class="ai-youtube-video-wrapper-{{ ai_gen_id }}">
+    {% if block.settings.youtube_url != blank %}
+      <iframe
+        class="ai-youtube-video-iframe-{{ ai_gen_id }}"
+        src=""
+        title="{{ block.settings.heading | default: 'YouTube video player' }}"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+    {% else %}
+      <div class="ai-youtube-video-placeholder-{{ ai_gen_id }}">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="23 7 16 12 23 17 23 7"></polygon>
+          <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+        </svg>
+        <div class="ai-youtube-video-placeholder-text-{{ ai_gen_id }}">Add YouTube URL</div>
+        <div class="ai-youtube-video-placeholder-subtext-{{ ai_gen_id }}">Enter a YouTube video URL in the block settings</div>
+      </div>
+    {% endif %}
+  </div>
+
+  {% if block.settings.description != blank %}
+    <div class="ai-youtube-video-description-{{ ai_gen_id }}">{{ block.settings.description }}</div>
+  {% endif %}
+</youtube-video-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class YouTubeVideo{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.videoUrl = this.dataset.videoUrl;
+        this.showControls = this.dataset.showControls === 'true';
+        this.autoplay = this.dataset.autoplay === 'true';
+        this.mute = this.dataset.mute === 'true';
+        this.loop = this.dataset.loop === 'true';
+      }
+
+      connectedCallback() {
+        if (this.videoUrl) {
+          this.setupVideo();
+        }
+      }
+
+      setupVideo() {
+        const iframe = this.querySelector('.ai-youtube-video-iframe-{{ ai_gen_id }}');
+        if (!iframe) return;
+
+        const videoId = this.extractVideoId(this.videoUrl);
+        if (!videoId) {
+          console.error('Could not extract YouTube video ID from:', this.videoUrl);
+          return;
+        }
+
+        // YouTube requires autoplay to be muted, so if autoplay is enabled, force mute to 1
+        const autoplayValue = this.autoplay ? '1' : '0';
+        const muteValue = this.autoplay ? '1' : (this.mute ? '1' : '0');
+
+        // Use the same parameters as the working external-video snippet
+        let params = 'autoplay=' + autoplayValue + '&controls=' + (this.showControls ? '1' : '0') + '&fs=0&loop=' + (this.loop ? '1' : '0') + '&playsinline=1&mute=' + muteValue + '&iv_load_policy=3&rel=0&enablejsapi=1&disablekb=1&color=white';
+
+        // Add playlist for loop functionality
+        if (this.loop) {
+          params += '&playlist=' + videoId;
+        }
+
+        const embedUrl = `https://www.youtube.com/embed/${videoId}?${params}`;
+
+        iframe.src = embedUrl;
+
+        // Add error handling
+        iframe.onerror = function() {
+          console.error('Failed to load YouTube video:', embedUrl);
+        };
+
+      }
+
+      extractVideoId(url) {
+        // Handle different YouTube URL formats
+        const patterns = [
+          /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^"&?\/\s]{11})/,
+          /youtube\.com\/watch\?.*v=([^"&?\/\s]{11})/,
+          /youtu\.be\/([^"&?\/\s]{11})/,
+          /youtube\.com\/embed\/([^"&?\/\s]{11})/
+        ];
+
+        for (const pattern of patterns) {
+          const match = url.match(pattern);
+          if (match && match[1]) {
+            return match[1];
+          }
+        }
+
+        console.error('No video ID found in URL:', url);
+        return null;
+      }
+    }
+
+    customElements.define('youtube-video-{{ ai_gen_id }}', YouTubeVideo{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "YouTube video",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "text",
+      "id": "youtube_url",
+      "label": "YouTube URL",
+      "info": "Paste the full YouTube video URL"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "Aspect ratio",
+      "options": [
+        {
+          "value": "56.25",
+          "label": "16:9 (Widescreen)"
+        },
+        {
+          "value": "75",
+          "label": "4:3 (Standard)"
+        },
+        {
+          "value": "100",
+          "label": "1:1 (Square)"
+        },
+        {
+          "value": "177.78",
+          "label": "9:16 (Vertical)"
+        }
+      ],
+      "default": "56.25"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 300,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "label": "Maximum width",
+      "default": 800
+    },
+    {
+      "type": "header",
+      "content": "Video controls"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_controls",
+      "label": "Show video controls",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay video",
+      "default": false,
+      "info": "Videos will be muted if autoplay is enabled"
+    },
+    {
+      "type": "checkbox",
+      "id": "mute",
+      "label": "Mute video",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop video",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Heading bottom spacing",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "description_spacing",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Description top spacing",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin bottom",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "YouTube video"
+    }
+  ]
+}
+{% endschema %}

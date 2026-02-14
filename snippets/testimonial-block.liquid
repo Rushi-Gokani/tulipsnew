@@ -1,0 +1,42 @@
+<div class="{% if section.blocks.size > 1 %}swiper-slide {% endif %}card-slider__slide testimonials__block">
+  <div class="testimonial__box">
+    <div class="testimonial__body color-{{ block.settings.color_scheme }}">
+      <div class="testimonial__content">
+        {%- if block.settings.author != blank -%}
+          <cite class="testimonial__author">
+            {{- block.settings.author -}}
+          </cite>
+        {%- endif -%}
+        {%- assign rating_score = block.settings.rating_score -%}
+        {%- if rating_score > 0 -%}
+          <div class="testimonial__rating">
+            {% for i in (1..5) %}
+              {% if i <= rating_score %}
+                <div class="testimonial__rating-filled">
+                  {%- if rating_icon == 'star' -%}
+                    {% render 'icon', icon_name: 'theme-star-filled', class: 'icon' %}
+                  {%- else -%}
+                    <span class="testimonial__rating-circle circle-filled"></span>
+                  {%- endif -%}
+                </div>
+              {% else %}
+                <div class="testimonial__rating-outlined">
+                  {%- if rating_icon == 'star' -%}
+                    {% render 'icon', icon_name: 'theme-star', class: 'icon' %}
+                  {%- else -%}
+                    <span class="testimonial__rating-circle"></span>
+                  {%- endif -%}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {%- endif -%}
+        {%- if block.settings.quote != blank -%}
+          <blockquote class="testimonial__quote">
+            {{- block.settings.quote -}}
+          </blockquote>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+{% schema %}
+{
+  "name": "Best Sellers",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Best Seller's"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "A GENTLE TOUCH FOR EVERYDAY COMFORT."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-2",
+      "label": "t:sections.global.color_scheme.label"
+    }
+  ],
+ "presets": [
+  {
+    "name": "Best Sellers",
+    "category": "Custom Sections",
+  }
+]
+
+}
+{% endschema %}
+
+<section class="best-sellers color-{{ section.settings.color_scheme }}">
+  <div class="container">
+    <h2 class="title">{{ section.settings.title }}</h2>
+    <p class="subtitle">{{ section.settings.subtitle }}</p>
+  </div>
+</section>
+
+<style>
+          .best-sellers {
+          text-align: center;
+          background-color: rgb(var(--color-background));
+          padding: var(--padding-top) var(--padding-bottom);
+      }
+
+      .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 40px 15px; /* Ensure proper spacing on small screens */
+        padding-bottom:0px;
+      }
+
+      .title {
+          color: rgb(var(--color-heading-text));
+          font-family: var(--font-heading-family);
+
+          font-weight: var(--font-heading-weight);
+      }
+
+      .subtitle {
+          color: rgb(var(--color-text));
+          font-size: 27px;
+          margin-bottom: 5px;
+
+      }
+
+
+      /* RESPONSIVE DESIGN */
+  /* For Tablets (768px and below) */
+  @media (max-width: 768px) {
+      .subtitle {
+          font-size: 22px;
+      }
+
+      .best-sellers-list {
+          gap: 15px;
+      }
+
+  }
+
+  /* For Mobile Devices (480px and below) */
+  @media (max-width: 480px) {
+      .subtitle {
+          font-size: 20px;
+      }
+
+      .best-sellers-list {
+          gap: 10px;
+      }
+
+  }
+</style>

@@ -1,0 +1,394 @@
+<section class="brand-section">
+  <!-- Desktop Background -->
+  <div
+    class="brand-background desktop-bg"
+    style="background-image: url('{{ section.settings.brand_image | image_url: width: 2400 }}');"
+  ></div>
+
+  <!-- Mobile Background -->
+  <div
+    class="brand-background mobile-bg"
+    style="background-image: url('{{ section.settings.brand_image_mobile | image_url: width: 1400 }}');"
+  ></div>
+
+  <div class="brand-wrapper">
+    <!-- Text Content -->
+    <div class="brand-text-content">
+      <h3 style="font-family:'TT Neoris light';">{{ section.settings.title }}</h3>
+      <p >{{ section.settings.description }}</p>
+      <div class="brand-list-columns">
+        <ul>
+          {% assign mid_index = section.blocks.size | divided_by: 2 %}
+          {% for block in section.blocks %}
+            {% if forloop.index0 == 0 or forloop.index0 == mid_index %}
+              {% if forloop.index0 == mid_index %}
+                </ul>
+                <ul>
+              {% endif %}
+            {% endif %}
+            <li>
+              {% if block.settings.icon_image %}
+                <span class="brand-icon-image">
+                  <img
+                    src="{{ block.settings.icon_image | image_url: width: 80 }}"
+                    loading="lazy"
+                    decoding="async"
+                    alt="icon"
+                    width="40"
+                    height="40"
+                  >
+                </span>
+              {% endif %}
+              {{ block.settings.text }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Buttons -->
+      <div class="brand-buttons">
+        {% if section.settings.button_1_text and section.settings.button_1_link %}
+          <a href="{{ section.settings.button_1_link }}" class="brand-button">{{ section.settings.button_1_text }}</a>
+        {% endif %}
+        {% if section.settings.button_2_text and section.settings.button_2_link %}
+          <a href="{{ section.settings.button_2_link }}" class="brand-button secondary">
+            {{- section.settings.button_2_text -}}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Brand Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "brand_image",
+      "label": "Brand Image"
+    },
+    {
+  "type": "image_picker",
+  "id": "brand_image_mobile",
+  "label": "Mobile Brand Image"
+},
+
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Why Choose Tulips Hygiene?"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>TULIPS is India’s leading & fastest-growing brand for Cotton & Wood-based personal hygiene products...</p>"
+    },
+    {
+  "type": "text",
+  "id": "button_1_text",
+  "label": "Button 1 Text",
+  "default": "Learn More"
+},
+{
+  "type": "url",
+  "id": "button_1_link",
+  "label": "Button 1 Link"
+},
+{
+  "type": "text",
+  "id": "button_2_text",
+  "label": "Button 2 Text",
+  "default": "Contact Us"
+},
+{
+  "type": "url",
+  "id": "button_2_link",
+  "label": "Button 2 Link"
+}
+
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "List Item",
+      "settings": [
+        {
+  "type": "image_picker",
+  "id": "icon_image",
+  "label": "Icon Image"
+},
+        {
+          "type": "text",
+          "id": "text",
+          "label": "List Text",
+          "default": "Today TULIPS products are selling pan-India, with a wide network of distributors..."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Section",
+      "category": "Custom Sections",
+      "blocks": [
+        {
+          "type": "text"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+           .brand-section {
+                  background-size: cover;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  padding: 60px 20px;
+                  color: white;
+                  /* optional: add a dark overlay for readability */
+                  position: relative;
+              }
+
+              .brand-section::before {
+                  content: "";
+                  position: absolute;
+                  inset: 0;
+
+
+              }
+
+              .brand-wrapper {
+                  position: relative; /* to be above overlay */
+                  max-width: 1200px;
+                  margin: auto;
+                  display: flex;
+                  justify-content: flex-start; /* left align */
+                  align-items: flex-start;
+                  gap: 50px;
+                  flex-wrap: wrap;
+                  z-index: 0;
+              }
+
+              .brand-text-content {
+                  max-width: 650px;
+                  text-align: left;
+              }
+
+              .brand-text-content h3,
+              .brand-text-content p,
+              .brand-text-content ul li,
+              .brand-buttons a {
+                  color: black; /* text color on dark bg */
+              }
+
+              /* List */
+             .brand-list-columns {
+        display: flex;
+
+              flex-direction: column;
+        margin-top: 20px;
+      }
+
+      .brand-list-columns ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        /* flex: 1 1 15%; /* each column takes up ~half the width */ */
+      }
+
+      .brand-list-columns ul li {
+        display: flex;
+        align-items: flex-start;
+        font-size: 16px;
+        margin-bottom: 15px;
+        line-height: 1.5;
+        color: black;
+      }
+
+
+              .brand-icon {
+                  flex-shrink: 0;
+                  font-size: 18px;
+                  color: #e67e22;
+                  border: 2px solid #e67e22;
+                  border-radius: 50%;
+                  width: 22px;
+                  height: 22px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin-right: 12px;
+                  margin-top: 3px;
+              }
+
+              /* Buttons */
+              .brand-buttons {
+
+                  display: flex;
+                  gap: 20px;
+                  flex-wrap: nowrap;
+              }
+
+              .brand-button {
+                  display: inline-block;
+                  padding: 12px 14px;
+                  background-color: #fa6e36;
+                  color: white !important;
+                  text-decoration: none;
+                  border-radius: 6px;
+                  font-weight: bold;
+                  transition: background-color 0.3s ease;
+              }
+
+              .brand-button:hover {
+                  background-color: transparent;
+                  border: 2px solid #fa6e36;
+                  color: black !important;
+              }
+
+              .brand-button.secondary {
+                  background-color: #fa6e36;
+              }
+
+              .brand-button.secondary:hover {
+                  background-color: transparent;
+                  border: 2px solid #fa6e36;
+                  color: black !important;
+              }
+
+
+          .brand-background {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 0;
+          }
+
+          .desktop-bg {
+            display: block !important;
+          }
+
+          .mobile-bg {
+            display: none;
+          }
+    .brand-icon-image {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 8px;
+      width: 35px;
+      height: 35px;
+
+    }
+
+    .brand-icon-image img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      margin-top:-4%;
+    }
+
+
+              /* Responsive */
+
+              @media screen and (max-width: 1024px) {
+                  .brand-wrapper {
+                      justify-content: center;
+                      text-align: center;
+                  }
+
+                  .brand-text-content {
+                      max-width: 100%;
+                      text-align: left; /* text aligned left inside container */
+                      margin: 0 auto;
+                  }
+
+                  .brand-text-content ul li {
+                      justify-content: flex-start;
+                  }
+              }
+
+              @media screen and (max-width: 768px) {
+                 .brand-text-content {
+                      max-width: 100%;
+                      text-align: left; /* text aligned left inside container */
+                      margin: 40% auto;
+                  }
+                  .brand-section {
+                      padding: 40px 15px;
+                  }
+
+                  .brand-text-content h2 {
+                      font-size: 24px;
+                  }
+
+                  .brand-text-content p,
+                  .brand-text-content ul li {
+                      font-size: 16px;
+                  }
+              }
+
+              @media screen and (max-width: 480px) {
+                  .brand-section {
+                      padding: 30px 15px;
+                  }
+
+                  .brand-text-content h2 {
+                      font-size: 22px;
+                  }
+
+                  .brand-text-content p,
+                  .brand-text-content ul li {
+                      font-size: 14px;
+                  }
+
+                  .brand-icon {
+                      width: 20px;
+                      height: 20px;
+                      font-size: 10px;
+                  }
+              }
+            @media screen and (max-width: 757px) {
+            .desktop-bg {
+              display: none !important;
+            }
+            .mobile-bg {
+              display: block !important;
+            }
+              .brand-section {
+            height: 1200px;
+        }
+              .brand-button {
+          display: inline-block;
+          padding: 12px 12px;
+                font-size:12px;
+              }
+              @media screen and (max-width: 768px) {
+    .mobile-bg {
+      width: 100%;
+      height: auto;
+      background-size: contain; /* Ensures full image is visible */
+      background-repeat: no-repeat;
+      background-position: top center;
+    }
+              }
+              .brand-section, .brand-wrapper, .brand-text-content {
+    z-index: 2;
+    position: relative;
+  }
+</style>

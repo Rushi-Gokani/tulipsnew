@@ -1,0 +1,188 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "page_banner_6kWj4z": {
+      "type": "page-banner",
+      "disabled": true,
+      "custom_css": [
+        "h2 {font-family: \"TT Neoris\", sans-serif !important; font-weight: 700;}",
+        "*/h1 {font-family: \"TT Neoris\", sans-serif !important; font-weight: 700;}"
+      ],
+      "settings": {
+        "heading": "{{ collection.title }}",
+        "heading_size": "h3",
+        "text": "",
+        "show_default_description": false,
+        "show_on_description": "desktop",
+        "content_position": "center",
+        "content_alignment": "center",
+        "media_position": "background",
+        "page_menu": "",
+        "enable_breadcrumbs": false,
+        "section_height": "33svh",
+        "video_external": "",
+        "show_controls_on_video": false,
+        "section_height_mobile": "50svh",
+        "video_external_mobile": "",
+        "show_controls_on_video_mobile": false,
+        "section_width": "max-w-page",
+        "color_scheme": "scheme-7",
+        "color_scheme_for_media": "",
+        "image_blur_effect": false,
+        "spacing_top": "2",
+        "spacing_bottom": "6"
+      }
+    },
+    "banner_below_img_4HEkF3": {
+      "type": "banner-below-img",
+      "disabled": true,
+      "settings": {
+        "wave_image": "shopify://shop_images/Group_7381_9689a597-ce59-494d-8a4d-1615b0011373.svg"
+      }
+    },
+    "custom_home_banner_gm8F4w": {
+      "type": "custom-home-banner",
+      "name": "Hero Banner",
+      "settings": {
+        "slide_1": "shopify://shop_images/tulips-adult-diapers-d_ef992781-d89b-454a-9736-2211126e1811.webp",
+        "slide_1_mobile": "shopify://shop_images/tulips-adult-diapers-m_eacedb30-acb8-479e-906e-cd15b6ccb511.webp"
+      }
+    },
+    "mixed_text_FY86PP": {
+      "type": "mixed-text",
+      "blocks": {
+        "tile_7MTidq": {
+          "type": "tile",
+          "settings": {
+            "text": "To avail the Buy 1 Get 1 offer, make sure to add quantity 2 of the same product to your cart."
+          }
+        },
+        "image_98bDr3": {
+          "type": "image",
+          "disabled": true,
+          "settings": {}
+        },
+        "tile_PUhXMq": {
+          "type": "tile",
+          "disabled": true,
+          "settings": {
+            "text": "Offer item"
+          }
+        }
+      },
+      "block_order": [
+        "tile_7MTidq",
+        "image_98bDr3",
+        "tile_PUhXMq"
+      ],
+      "name": "t:sections.mixed-text.name",
+      "settings": {
+        "content_width": 100,
+        "content_alignment": "align-center text-center justify-center",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "button--outlined",
+        "section_width": "max-w-fluid",
+        "color_scheme": "",
+        "spacing_top": "0",
+        "spacing_bottom": "0"
+      }
+    },
+    "main": {
+      "type": "main-collection-best-seller",
+      "blocks": {
+        "text_card_J6n8hm": {
+          "type": "text-card",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "scheme-5",
+            "text": "<h3>Share info about your collection with your customers.</h3>",
+            "button_link": "",
+            "link_type": "button",
+            "button_label": "",
+            "button_style": "button--text",
+            "content_position": "center",
+            "content_alignment": "center",
+            "content_position_mobile": "center",
+            "content_alignment_mobile": "center",
+            "position": 7,
+            "column_factor": 2,
+            "row_factor": 2
+          }
+        },
+        "text_card_J6n8hn": {
+          "type": "text-card",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "scheme-6",
+            "text": "<h3>Find strength in <br/>stylish <em>women</em> <br/>activewear</h3>",
+            "button_link": "",
+            "link_type": "button",
+            "button_label": "",
+            "button_style": "button--text",
+            "content_position": "center",
+            "content_alignment": "center",
+            "content_position_mobile": "center",
+            "content_alignment_mobile": "center",
+            "position": 13,
+            "column_factor": 1,
+            "row_factor": 1
+          }
+        }
+      },
+      "block_order": [
+        "text_card_J6n8hm",
+        "text_card_J6n8hn"
+      ],
+      "custom_css": [
+        ".list-unstyled {margin-bottom: 5%;}",
+        ".collection__grid {margin-bottom: 5%;}"
+      ],
+      "settings": {
+        "show_top_border_for_utilities_bar": false,
+        "enable_products_count": true,
+        "enable_sorting": true,
+        "enable_opened_accordions": true,
+        "enable_new_styles": true,
+        "enable_new_badge": false,
+        "filters": "drawer",
+        "products_per_row": "4",
+        "products_per_row_mobile": "2",
+        "products_per_page": 19,
+        "pagination_style": "default",
+        "enable_infinity_scroll": false,
+        "section_width": "max-w-page",
+        "color_scheme": "scheme-3",
+        "spacing_top": "2",
+        "spacing_bottom": "6"
+      }
+    },
+    "custom_liquid_C4rTWe": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.name",
+      "settings": {
+        "custom_liquid": "{% if collection.metafields.custom.additional_information %}\n  <div class=\"collection-additional-info\" style=\"text-align: left; max-width: 1600px; padding-bottom: 40px;\">\n    {{ collection.metafields.custom.additional_information | metafield_text }}\n  </div>\n{% endif %}",
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    }
+  },
+  "order": [
+    "page_banner_6kWj4z",
+    "banner_below_img_4HEkF3",
+    "custom_home_banner_gm8F4w",
+    "mixed_text_FY86PP",
+    "main",
+    "custom_liquid_C4rTWe"
+  ]
+}
