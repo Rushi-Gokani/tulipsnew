@@ -1,0 +1,744 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "content_grid_YcQegY": {
+          "type": "content_grid",
+          "disabled": true,
+          "settings": {
+            "heading": "",
+            "icon": "theme-box"
+          }
+        },
+        "goback_zMzywG": {
+          "type": "goback",
+          "settings": {
+            "goback_style": "filled",
+            "goback_label": "",
+            "display_goback_mobile": "on-media"
+          }
+        },
+        "breadcrumbs_JRrp9d": {
+          "type": "breadcrumbs",
+          "disabled": true,
+          "settings": {}
+        },
+        "1e0c79e9-7de0-4eee-b9c5-f27132635fb8": {
+          "type": "title",
+          "settings": {
+            "spacing_bottom": "3"
+          }
+        },
+        "8effeb43-55b7-4ec4-ab9b-68bcd89b865b": {
+          "type": "price",
+          "settings": {
+            "spacing_bottom": "0",
+            "show_price_tax_info": true,
+            "show_price_shipping_info": false,
+            "show_price_custom_info": ""
+          }
+        },
+        "text_PYBaeg": {
+          "type": "text",
+          "settings": {
+            "spacing_bottom": "1",
+            "heading": "MRP Incl. Of Taxes",
+            "icon": "",
+            "link_to_resource": "none",
+            "text_before_link": false,
+            "heading_secondary": "",
+            "metafield_for_product_variant": "",
+            "show_block_content": true
+          }
+        },
+        "judge_me_reviews_preview_badge_rhNt3K": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "badge_dC66pN": {
+          "type": "badge",
+          "settings": {
+            "spacing_bottom": "1",
+            "show_badges": true,
+            "show_badges_discount": true,
+            "show_badges_sold": true
+          }
+        },
+        "sku_HNK7Ka": {
+          "type": "sku",
+          "settings": {
+            "spacing_bottom": "1"
+          }
+        },
+        "custom_text_n7XG8i": {
+          "type": "custom-text",
+          "settings": {
+            "rich_text": "{{ product.metafields.custom.short_description | metafield_tag }}",
+            "metafield_reference": "",
+            "spacing_bottom": 0
+          }
+        },
+        "divider_HGwyhB": {
+          "type": "divider",
+          "settings": {
+            "spacing_bottom": "3"
+          }
+        },
+        "8604a6ff-ad0b-44dd-8068-1de4e062f8e8": {
+          "type": "buy_buttons",
+          "settings": {
+            "spacing_bottom": "3",
+            "show_quantity": true,
+            "layout": "inline",
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "es_back_in_stock_product_restore_email_yW4PKD": {
+          "type": "shopify://apps/es-back-in-stock/blocks/product-restore-email/b190bced-3b7b-47da-a05f-6ea4821c3a77",
+          "settings": {}
+        },
+        "e6d841d6-2f71-40b3-956a-912df13f9f6e": {
+          "type": "inventory_notice",
+          "settings": {
+            "spacing_bottom": "1",
+            "inventory_threshold": 15,
+            "notice_just_text": false
+          }
+        },
+        "7be6b89c-da83-4ff2-9b85-44fb28cbfa27": {
+          "type": "pickup-availability",
+          "settings": {
+            "spacing_bottom": "2"
+          }
+        },
+        "b2dabe12-2158-4ba6-bc54-9baae453acf5": {
+          "type": "text",
+          "settings": {
+            "spacing_bottom": "1",
+            "heading": "Free Shipping for Orders Above 399",
+            "icon": "theme-check",
+            "link_to_resource": "none",
+            "text_before_link": false,
+            "heading_secondary": "",
+            "metafield_for_product_variant": "",
+            "show_block_content": true
+          }
+        },
+        "1ad0121e-439d-45c0-b45d-4f080836ade5": {
+          "type": "text",
+          "settings": {
+            "spacing_bottom": "1",
+            "heading": "Secure online payment",
+            "icon": "theme-check",
+            "link_to_resource": "none",
+            "text_before_link": false,
+            "heading_secondary": "",
+            "metafield_for_product_variant": "",
+            "show_block_content": true
+          }
+        },
+        "marketplace_accordion_Ec7Mwj": {
+          "type": "marketplace-accordion",
+          "disabled": true,
+          "settings": {
+            "enable_marketplace_section": true,
+            "marketplace_title": "Buy from Marketplaces",
+            "marketplace_bg": "#ffffff",
+            "marketplace_text": "#000000"
+          }
+        },
+        "content_block_WXynBp": {
+          "type": "content_block",
+          "settings": {
+            "spacing_bottom": "0",
+            "heading": "Description",
+            "row_content": "{{ product.description }}",
+            "icon": "",
+            "page": "",
+            "metafield_for_product_variant": "",
+            "show_block_content": true,
+            "behaviour": "plain"
+          }
+        },
+        "content_block_AwnDqf": {
+          "type": "content_block",
+          "settings": {
+            "spacing_bottom": "0",
+            "heading": "Ingredients",
+            "row_content": "{{ product.metafields.custom.ingredients | metafield_tag }}",
+            "icon": "",
+            "page": "",
+            "metafield_for_product_variant": "",
+            "show_block_content": true,
+            "behaviour": "plain"
+          }
+        },
+        "content_block_7CYChe": {
+          "type": "content_block",
+          "settings": {
+            "spacing_bottom": "0",
+            "heading": "How to use",
+            "row_content": "{{ product.metafields.custom.how_to_use | metafield_tag }}<p></p>",
+            "icon": "",
+            "page": "",
+            "metafield_for_product_variant": "",
+            "show_block_content": false,
+            "behaviour": "plain"
+          }
+        },
+        "content_block_3JdeCT": {
+          "type": "content_block",
+          "settings": {
+            "spacing_bottom": "0",
+            "heading": "Specifications",
+            "row_content": "{{ product.metafields.custom.specifications | metafield_tag }}",
+            "icon": "",
+            "page": "",
+            "metafield_for_product_variant": "",
+            "show_block_content": true,
+            "behaviour": "plain"
+          }
+        },
+        "content_block_3he3xX": {
+          "type": "content_block",
+          "settings": {
+            "spacing_bottom": "0",
+            "heading": "Additional Details",
+            "row_content": "{{ product.metafields.custom.additional_details | metafield_tag }}",
+            "icon": "",
+            "page": "",
+            "metafield_for_product_variant": "",
+            "show_block_content": true,
+            "behaviour": "plain"
+          }
+        },
+        "content_block_pLRYRF": {
+          "type": "content_block",
+          "settings": {
+            "spacing_bottom": "1",
+            "heading": "Manufacturer Details",
+            "row_content": "<p>{{ product.metafields.custom.manufacturer_details | metafield_tag }}</p>",
+            "icon": "",
+            "page": "",
+            "metafield_for_product_variant": "",
+            "show_block_content": true,
+            "behaviour": "plain"
+          }
+        },
+        "content_block_tLEMR6": {
+          "type": "content_block",
+          "settings": {
+            "spacing_bottom": "0",
+            "heading": "Product Details Per Unit",
+            "row_content": "{{ product.metafields.custom.product_details_per_unit | metafield_tag }}",
+            "icon": "",
+            "page": "",
+            "metafield_for_product_variant": "",
+            "show_block_content": true,
+            "behaviour": "plain"
+          }
+        },
+        "judge_me_reviews_review_widget_GxCbeV": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget",
+            "max_width": 1200
+          }
+        }
+      },
+      "block_order": [
+        "content_grid_YcQegY",
+        "goback_zMzywG",
+        "breadcrumbs_JRrp9d",
+        "1e0c79e9-7de0-4eee-b9c5-f27132635fb8",
+        "8effeb43-55b7-4ec4-ab9b-68bcd89b865b",
+        "text_PYBaeg",
+        "judge_me_reviews_preview_badge_rhNt3K",
+        "badge_dC66pN",
+        "sku_HNK7Ka",
+        "custom_text_n7XG8i",
+        "divider_HGwyhB",
+        "8604a6ff-ad0b-44dd-8068-1de4e062f8e8",
+        "es_back_in_stock_product_restore_email_yW4PKD",
+        "e6d841d6-2f71-40b3-956a-912df13f9f6e",
+        "7be6b89c-da83-4ff2-9b85-44fb28cbfa27",
+        "b2dabe12-2158-4ba6-bc54-9baae453acf5",
+        "1ad0121e-439d-45c0-b45d-4f080836ade5",
+        "marketplace_accordion_Ec7Mwj",
+        "content_block_WXynBp",
+        "content_block_AwnDqf",
+        "content_block_7CYChe",
+        "content_block_3JdeCT",
+        "content_block_3he3xX",
+        "content_block_pLRYRF",
+        "content_block_tLEMR6",
+        "judge_me_reviews_review_widget_GxCbeV"
+      ],
+      "custom_css": [
+        ".product-button__goback--filled > span,.product-button__goback--text > span.button--text {font-size: 12px !important;}",
+        ".breadcrumbs {font-size: 12px;}",
+        ".product-button__goback--filled > .icon svg,.product-button__goback--text > .icon svg {width: 1.2rem; height: 1.2rem;}"
+      ],
+      "settings": {
+        "product_media_layout": "product__media-layout--full",
+        "product_media_layout_mobile": "product__media-layout--full--sm",
+        "product_media_aspect_ratio": "1/1",
+        "product_media_object_fit": "cover",
+        "product_slider_auto_height": true,
+        "media_transparent_background": true,
+        "display_media_zoom": "click",
+        "product_media_with_thumbs": "desktop_and_mobile",
+        "product_media_thumbs_ratio": "1/1",
+        "product_media_thumbs_object_fit": "cover",
+        "gallery_arrows_show_on": "desktop",
+        "display_media_gallery_pagination": "none",
+        "media_gallery_info": "",
+        "metafield_as_seen_on": "",
+        "color_scheme_gallery": "scheme-1",
+        "enable_sticky_info": true,
+        "enable_actions_bar": true,
+        "media_grid_size": "medium",
+        "media_grid_position": "start",
+        "grid_gap": "6",
+        "spacing_grid": 1.6,
+        "grid_content_alignment": "start",
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "2",
+        "spacing_bottom": "4",
+        "enable_auto_scroll": true,
+        "auto_scroll_delay": 4,
+        "auto_scroll_pause_on_hover": true
+      }
+    },
+    "marquees_7cXDr9": {
+      "type": "marquees",
+      "blocks": {
+        "item_674ajy": {
+          "type": "item",
+          "settings": {
+            "icon": "theme-box",
+            "custom_icon": "shopify://shop_images/hand-svgrepo-com_1_1.png",
+            "title": "Untouched By Hands",
+            "link": ""
+          }
+        },
+        "item_dnTd9m": {
+          "type": "item",
+          "settings": {
+            "icon": "theme-box",
+            "custom_icon": "shopify://shop_images/go-green-svgrepo-com_1.png",
+            "title": "Sustainable Source",
+            "link": ""
+          }
+        },
+        "item_CBPCi6": {
+          "type": "item",
+          "settings": {
+            "icon": "theme-box",
+            "custom_icon": "shopify://shop_images/water-drop-svgrepo-com_1.png",
+            "title": "Pure & Softest",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_674ajy",
+        "item_dnTd9m",
+        "item_CBPCi6"
+      ],
+      "custom_css": [
+        ".marquee__content > * {padding: 0px;}"
+      ],
+      "settings": {
+        "enable_animation": true,
+        "marquee_duration_rate": 6,
+        "marquee_font_size": 1,
+        "marquee_items_spacing": 2.4,
+        "color_scheme": "scheme-7",
+        "spacing_top": "0",
+        "spacing_bottom": "0"
+      }
+    },
+    "brandabout_nqTCpF": {
+      "type": "brandabout",
+      "blocks": {
+        "text_C4LzgX": {
+          "type": "text",
+          "settings": {
+            "icon_image": "shopify://shop_images/25_Years_of_Excellence.png",
+            "text": "25+ Years of Excellence"
+          }
+        },
+        "text_LzCx8P": {
+          "type": "text",
+          "settings": {
+            "icon_image": "shopify://shop_images/Made_in_India_Trusted_Globally.png",
+            "text": "Made in India, Trusted Globally"
+          }
+        },
+        "text_TXgmnT": {
+          "type": "text",
+          "settings": {
+            "icon_image": "shopify://shop_images/Dermatologically_Tested_Products.png",
+            "text": "Dermatologically Tested Products"
+          }
+        },
+        "text_X4Q3qr": {
+          "type": "text",
+          "settings": {
+            "icon_image": "shopify://shop_images/Ethical_Sustainable_Practices.png",
+            "text": "Ethical & Sustainable Practices"
+          }
+        }
+      },
+      "block_order": [
+        "text_C4LzgX",
+        "text_LzCx8P",
+        "text_TXgmnT",
+        "text_X4Q3qr"
+      ],
+      "custom_css": [
+        "h3 {font-family: \"TheSeasonsLT\", sans-serif;}"
+      ],
+      "settings": {
+        "brand_image": "shopify://shop_images/Tulips_Hygiene_is_India_s_leading_brand_in_personal_hygiene_offering_safe_skin-friendly_and_affodab-_le_products_made_with_care_since_1998._From_cot-_ton_buds_to_wet_wipes_every_produ_6e679399-61ca-44ed-bd3b-e43269ee9d09.png",
+        "brand_image_mobile": "shopify://shop_images/Tulips_Hygiene_is_India_s_leading_brand_in_personal_hygiene_offering_safe_skin-friendly_and_affodab-_le_products_made_with_care_since_1998._From_cot-_ton_buds_to_wet_wipes_every_produ_420659ed-25c8-4b1b-95d6-cf575d51fe13.png",
+        "title": "Why Choose Tulips Hygiene?",
+        "description": "<p><strong>Trusted by Millions. Rooted in Care.</strong></p><p><strong><br/></strong>Tulips Hygiene is India’s leading brand in personal hygiene, offering safe, skin-friendly, and affordable products made with care since 1998. From cotton buds to wet wipes, every product is crafted with precision in world-class facilities and trusted by families across the globe.</p><p>Our commitment goes beyond hygiene — it's about creating everyday essentials that are clean, dependable, and accessible to all.</p>",
+        "button_1_text": "Learn More About Us",
+        "button_1_link": "shopify://pages/about-us",
+        "button_2_text": "View Our Certifications",
+        "button_2_link": "shopify://pages/our-certificates"
+      }
+    },
+    "shower_gel_images_VNNiRa": {
+      "type": "shower-gel-images",
+      "disabled": true,
+      "settings": {}
+    },
+    "product_page_banners_PXFH8Q": {
+      "type": "product-page-banners",
+      "settings": {}
+    },
+    "accordions_cnrH6P": {
+      "type": "accordions",
+      "blocks": {
+        "topic_FPRXN4": {
+          "type": "topic",
+          "settings": {
+            "is_open": true,
+            "title": "What are eco-friendly cotton buds?",
+            "text": "<p>Eco-friendly cotton buds are made from biodegradable materials like bamboo or wooden sticks and 100% natural cotton, offering a sustainable alternative to plastic cotton buds.</p>",
+            "page": ""
+          }
+        },
+        "topic_NE3WyC": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "Are these cotton buds plastic-free?Delivery details",
+            "text": "<p>Yes, they are completely plastic-free and made from natural materials, reducing environmental pollution.</p>",
+            "page": ""
+          }
+        },
+        "topic_H3GtLx": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "Are they compostable?",
+            "text": "<p>Yes, bamboo and wooden cotton buds are fully compostable and decompose naturally without harming the environment.</p>",
+            "page": ""
+          }
+        },
+        "topic_4rgD7f": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "Are they as durable as regular cotton buds?",
+            "text": "<p>Absolutely! Eco-friendly cotton buds are strong and durable, just like traditional plastic ones.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "topic_FPRXN4",
+        "topic_NE3WyC",
+        "topic_H3GtLx",
+        "topic_4rgD7f"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "FAQs",
+        "heading_size": "h3",
+        "section_width": "max-w-narrower",
+        "color_scheme": "scheme-5",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "product_recommendations_KJBPqB": {
+      "type": "product-recommendations",
+      "name": "t:sections.product-recommendations.name",
+      "settings": {
+        "layout": "layout-1",
+        "enable_slideshow_overflow": false,
+        "enable_new_styles": true,
+        "enable_new_badge": true,
+        "heading": "You may also like",
+        "heading_size": "h3",
+        "subheading": "",
+        "button_label": "View all",
+        "button_link": "shopify://collections/all",
+        "button_style": "button--filled",
+        "show_navigation_arrows": true,
+        "slider_autoplay": 3,
+        "tabs_button_style": "tab-btn-filled",
+        "max_products": 8,
+        "show_unavailable_products": false,
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "featured_products_rcWQKa": {
+      "type": "featured-products",
+      "blocks": {
+        "collection_cAGA3m": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "collection": "best-sellers",
+            "products": [],
+            "vendor": "",
+            "collection_of_products": "",
+            "show_unavailable_products": false
+          }
+        },
+        "collection_WYpJFf": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "collection": "",
+            "products": [
+              "absorbent-cotton-roll-100-gm-in-a-ziplock-bag",
+              "absorbent-cotton-roll",
+              "aloe-vera-cleansing-milk",
+              "eco-friendly-cotton-buds-swabs-100-sticks-in-a-jar",
+              "premium-eco-friendly-cotton-ear-buds-swabs-200-sticks-in-a-fliptop-jar"
+            ],
+            "vendor": "",
+            "collection_of_products": "",
+            "show_unavailable_products": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_cAGA3m",
+        "collection_WYpJFf"
+      ],
+      "settings": {
+        "layout": "layout-1",
+        "enable_new_styles": true,
+        "button_color_scheme": "custom",
+        "custom_add_to_cart_bg": "#a4c86e",
+        "custom_add_to_cart_text": "#a4c86e",
+        "custom_add_to_cart_outline": "#a4c86e",
+        "custom_buy_now_bg": "#a4c86e",
+        "custom_buy_now_text": "#ffffff",
+        "custom_buy_now_outline": "#a4c86e",
+        "product_filter": "all",
+        "heading": "Best Sellers",
+        "heading_size": "h3",
+        "subheading": "",
+        "button_label": "View all",
+        "button_link": "",
+        "button_style": "button--filled",
+        "max_products": 99,
+        "show_navigation_arrows": true,
+        "slideshow_autoplay_interval": 4,
+        "tab_button_style": "button--filled",
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "0",
+        "spacing_bottom": "2"
+      }
+    },
+    "store_locator_7HgFpM": {
+      "type": "store-locator",
+      "blocks": {
+        "pin_mytXjg": {
+          "type": "pin",
+          "settings": {
+            "store_title": "<h3>Paris, <em>Fr</em></h3>",
+            "store_address": "487/18, Peeragarhi, Rohtak Road,  Delhi - 110087",
+            "store_opening_hours": "<p>Mon-Sat: 10am-8pm<br/>Sunday</p>",
+            "store_latitude": "48.85850418716008",
+            "store_longitude": "2.294803163425021",
+            "coordinate_title": "",
+            "button_style": "button--outlined",
+            "store_tel_button": "Call",
+            "store_tel": "+91 955 574 5745",
+            "store_pin": "Directions",
+            "store_pin_link": "",
+            "color_scheme": "scheme-4"
+          }
+        },
+        "pin_yUkRXi": {
+          "type": "pin",
+          "disabled": true,
+          "settings": {
+            "store_title": "<h3>Antwerp, <em>Bel</em></h3>",
+            "store_address": "Your store address",
+            "store_opening_hours": "<p>Mon-Sat: 10am-8pm<br/>Sunday</p>",
+            "store_latitude": "41.902331905731444",
+            "store_longitude": "12.45445667605574",
+            "coordinate_title": "",
+            "button_style": "button--outlined",
+            "store_tel_button": "Call",
+            "store_tel": "+01 234 567 8900",
+            "store_pin": "Directions",
+            "store_pin_link": "",
+            "color_scheme": "scheme-4"
+          }
+        },
+        "see_more_WPFKbW": {
+          "type": "see-more",
+          "settings": {
+            "card_title": "<h3>Discover our <em>other stores</em></h3>",
+            "button_style": "button--outlined",
+            "button_label": "See all stores",
+            "button_link": "shopify://pages/store-locator",
+            "search": false,
+            "color_scheme": ""
+          }
+        }
+      },
+      "block_order": [
+        "pin_mytXjg",
+        "pin_yUkRXi",
+        "see_more_WPFKbW"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".grid {margin-bottom: 10%;}"
+      ],
+      "settings": {
+        "heading": "Our<em> </em>Stores",
+        "heading_size": "h3",
+        "layout": "image",
+        "image_grid_columns": "3",
+        "cards_height": 50,
+        "cards_height_auto": false,
+        "cards_height_mobile": 60,
+        "api_key": "",
+        "zoom_level": 4,
+        "card_background_style": "solid",
+        "section_width": "max-w-page",
+        "color_scheme": "scheme-1",
+        "spacing_top": "1",
+        "spacing_bottom": "6"
+      }
+    },
+    "testimonials_QEGKRB": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_PGVTxy": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Isha Keskar",
+            "quote": "<p><strong>Tulips Cotton Pad</strong></p><p>Undoubtedly one of the best. Been using for years and ordering multiple times. Will definitely recommend.<br/><br/></p>",
+            "rating_score": 5,
+            "color_scheme": "scheme-1"
+          }
+        },
+        "testimonial_EmN67G": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Sonali Umare",
+            "quote": "<p><strong>Wow! Amazing product ,like no one in the market</strong></p><p>Amazing cotton pads—truly the best in the market! Double-sided, high-quality, and perfect for sensitive skin. I use them with micellar water every night, and they visibly remove dirt. Great packaging, multipurpose, and budget-friendly. Highly recommended!\"</p>",
+            "rating_score": 4,
+            "color_scheme": "scheme-1"
+          }
+        },
+        "testimonial_XXDxta": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Jyotsassy Arya",
+            "quote": "<p><strong>Affordable and best </strong></p><p>Go for it without any second thoughts. It is very nice soft and thick cotton pad. Can easily remove makeup. Is gentle on your skin and Very affordable. Go for it at this price you won't get 50 pads in other brands.</p>",
+            "rating_score": 5,
+            "color_scheme": "scheme-1"
+          }
+        },
+        "testimonial_tyjytp": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Vaidehee",
+            "quote": "<p><strong>Good product to remove make up</strong></p><p>Tulips has good quality products! I used their cotton pad to wipe off my sister's make up. Cotton pad has different textures on both sides. One sides has soft and other has long ridges. It's easy to use and removes smudge proof and water proof make up easily. Moves softly on skin. Good quality and bought it at cheap price.</p>",
+            "rating_score": 5,
+            "color_scheme": "scheme-1"
+          }
+        },
+        "testimonial_YW8E98": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Sneha Singh",
+            "quote": "<p><strong>The best in the market</strong></p><p>It comes in a neat zip lock packet which is so convenient. It doesn’t leave fibers on you while you rub your face with it.</p>",
+            "rating_score": 5,
+            "color_scheme": "scheme-1"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_PGVTxy",
+        "testimonial_EmN67G",
+        "testimonial_XXDxta",
+        "testimonial_tyjytp",
+        "testimonial_YW8E98"
+      ],
+      "settings": {
+        "heading": "From Our Happy Customers",
+        "heading_size": "h3",
+        "subheading": "Our promise of purity, proven by the people who use Our Products daily",
+        "rating_icon": "star",
+        "layout": "carousel-none-media",
+        "slider_autoplay": 4,
+        "image": "shopify://shop_images/istockphoto-813464504-612x612.jpg",
+        "image_position": "image-end",
+        "image_aspect_ratio": "4/3",
+        "media_show_on": "desktop",
+        "spacing_inner": "2",
+        "section_width": "max-w-page",
+        "color_scheme": "scheme-5",
+        "spacing_top": "1",
+        "spacing_bottom": "4"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "marquees_7cXDr9",
+    "brandabout_nqTCpF",
+    "shower_gel_images_VNNiRa",
+    "product_page_banners_PXFH8Q",
+    "accordions_cnrH6P",
+    "product_recommendations_KJBPqB",
+    "featured_products_rcWQKa",
+    "store_locator_7HgFpM",
+    "testimonials_QEGKRB"
+  ]
+}

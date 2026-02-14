@@ -409,10 +409,7 @@
   </script>
 {%- endcapture -%}
 
-{%- assign product_link_with_variant = product_ref.url
-  | append: '?variant='
-  | append: product_ref.selected_or_first_available_variant.id
--%}
+{%- assign product_link_with_variant = product_ref.url | strip -%}
 
 {%- if search_product -%}
   {%- assign product_link_with_variant = product_ref.url -%}

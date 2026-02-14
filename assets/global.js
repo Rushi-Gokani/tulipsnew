@@ -46,10 +46,10 @@ if (sectionsOfAnnouncementBar) {
     document.documentElement.style.setProperty(property, value);
   };
 
-  function calcSectionHeights (section) {
+  function calcSectionHeights(section) {
     const sectionHeights = {
-      visibleHeight : Math.max(0, Math.min(section.offsetHeight, window.innerHeight - section.getBoundingClientRect().top, section.getBoundingClientRect().bottom)),
-      height : section.getBoundingClientRect().height
+      visibleHeight: Math.max(0, Math.min(section.offsetHeight, window.innerHeight - section.getBoundingClientRect().top, section.getBoundingClientRect().bottom)),
+      height: section.getBoundingClientRect().height
     };
     return sectionHeights;
   }
@@ -74,7 +74,7 @@ if (sectionsOfAnnouncementBar) {
             const { height, visibleHeight } = calcSectionHeights(section);
             totalHeights += height;
             totalVisibleHeights += visibleHeight;
-        });
+          });
         setCustomProperty(`--announcement-bars-before-header-heights`, `${parseFloat(totalHeights)}px`);
         setCustomProperty(`--announcement-bars-before-header-visible-heights`, `${parseFloat(totalVisibleHeights)}px`);
       }
@@ -304,7 +304,7 @@ function setRootCustomProperties() {
   // header height
   if (header) {
     let headerHeight = header.getBoundingClientRect().height.toFixed(2);
-    setCustomProperty("--header-height",`${parseFloat(headerHeight)}px`);
+    setCustomProperty("--header-height", `${parseFloat(headerHeight)}px`);
   } else {
     setCustomProperty("--header-height", `0px`);
   }
@@ -424,19 +424,19 @@ function setRootCustomProperties() {
   }
 }
 
-  // scroll-position
-  function scrollPositionY() {
-    setCustomProperty("--window-scroll-y-position", window.scrollY);
-    if (window.scrollY === 0) {
-      document.body.classList.add('is-at-top');
-      document.body.classList.remove('is-scrolled');
-    } else {
-      document.body.classList.add('is-scrolled');
-      document.body.classList.remove('is-at-top');
-    }
+// scroll-position
+function scrollPositionY() {
+  setCustomProperty("--window-scroll-y-position", window.scrollY);
+  if (window.scrollY === 0) {
+    document.body.classList.add('is-at-top');
+    document.body.classList.remove('is-scrolled');
+  } else {
+    document.body.classList.add('is-scrolled');
+    document.body.classList.remove('is-at-top');
   }
-  scrollPositionY();
-  window.addEventListener("scroll", scrollPositionY);
+}
+scrollPositionY();
+window.addEventListener("scroll", scrollPositionY);
 
 
 
@@ -450,7 +450,7 @@ if (isAnnouncementBarAfterHeader && isHeaderTransparent) {
     let announcementBarTop = Math.max(
       0,
       announcementBar.getBoundingClientRect().y +
-        announcementBar.offsetHeight
+      announcementBar.offsetHeight
     );
     if (isMobile) {
       main.style.marginTop = `-${parseInt(announcementBarTop)}px`;
@@ -1302,7 +1302,7 @@ class TulipsAccordionDefault extends HTMLElement {
       const btn = closestOpenDetails.querySelector("summary");
 
       if (this.closest('tulips-menu-drawer')?.classList.contains('facets__drawer') ||
-          this.closest('menu-drawer')?.classList.contains('facets__drawer')) {
+        this.closest('menu-drawer')?.classList.contains('facets__drawer')) {
         const drawer = this.closest('tulips-menu-drawer') || this.closest('menu-drawer');
         if (drawer) drawer.toggleDrawer();
         return;
@@ -2223,7 +2223,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var faqPage = document.querySelector('.template--faq');
 
-  if(faqPage) {
+  if (faqPage) {
     var accordions = document.querySelectorAll(".accordion__section");
     accordions.forEach(function (accordion) {
       accordion.addEventListener("click", function () {
@@ -2345,8 +2345,19 @@ if (!customElements.get("product-card")) {
       config.body = formData;
 
       fetch(`${routes.cart_add_url}`, config)
-        .then(response => response.json())
         .then(response => {
+          if (!response.ok) {
+            console.warn('Cart add failed with status:', response.status, '- falling back to form submission');
+            const form = event.target;
+            form.setAttribute('method', 'POST');
+            form.setAttribute('action', routes.cart_add_url);
+            form.submit();
+            return;
+          }
+          return response.json();
+        })
+        .then(response => {
+          if (!response) return;
           if (response.errors) {
             this.handleErrorMessage(response.errors);
             return;
@@ -2357,11 +2368,18 @@ if (!customElements.get("product-card")) {
           }
 
           updateCartCounters();
-          
+
           // Show notification instead of opening cart drawer
           this.showAddToCartNotification();
         })
-        .catch((error) => { console.error(error) })
+        .catch((error) => {
+          console.error(error);
+          // Fallback to traditional form submission
+          const form = event.target;
+          form.setAttribute('method', 'POST');
+          form.setAttribute('action', routes.cart_add_url);
+          form.submit();
+        })
         .finally(() => {
           this.submitButton.removeAttribute("disabled");
           this.submitButton.classList.remove(
@@ -2542,12 +2560,14 @@ if (!customElements.get("product-card")) {
       this.querySelectorAll("[data-product-link]").forEach(
         linkItem => {
           const currentLink = linkItem.getAttribute("href");
-          if (currentVariantId) {
-            const newLink =
-              currentLink.split("?variant=")[0] +
-              "?variant=" +
-              currentVariantId;
-            linkItem.setAttribute("href", newLink);
+          if (currentVariantId && currentLink) {
+            try {
+              const url = new URL(currentLink, window.location.origin);
+              url.searchParams.set("variant", currentVariantId);
+              linkItem.setAttribute("href", url.toString());
+            } catch (e) {
+              console.warn("Invalid product link:", currentLink);
+            }
           }
         }
       );
@@ -2676,7 +2696,7 @@ if (!customElements.get("product-card")) {
               ((selectedVariant.compare_at_price -
                 selectedVariant.price) /
                 selectedVariant.compare_at_price) *
-                100
+              100
             );
             // update discount percentage
             percentageElement.textContent = discountPercentage;
@@ -2725,7 +2745,7 @@ if (!customElements.get("product-card")) {
       // Prevent multiple notifications
       if (this._notificationShown) return;
       this._notificationShown = true;
-      
+
       // Create notification
       const notification = document.createElement('div');
       notification.style.cssText = `
@@ -2742,10 +2762,10 @@ if (!customElements.get("product-card")) {
         animation: slideInRight 0.3s ease-out;
       `;
       notification.textContent = "✅ Product added to cart!";
-      
+
       // Add to page
       document.body.appendChild(notification);
-      
+
       // Remove after 3 seconds and reset flag
       setTimeout(() => {
         notification.remove();
@@ -2833,8 +2853,7 @@ if (!customElements.get("product-card")) {
           [1, 2, 3].forEach(i => {
             if (i !== optionIndex && item[`option${i}`]) {
               const itemToDisable = this.querySelector(
-                `.variant-option-radio-input[value="${
-                  item[`option${i}`]
+                `.variant-option-radio-input[value="${item[`option${i}`]
                 }"]`
               );
               // itemToDisable.setAttribute("disabled", "");
@@ -2849,7 +2868,7 @@ if (!customElements.get("product-card")) {
       const variantsObj = JSON.parse(
         this.querySelector("[data-product-variants-json]")
           ? this.querySelector("[data-product-variants-json]")
-              .textContent
+            .textContent
           : "[]"
       );
       if (variantsObj && Object.keys(variantsObj).length === 0)
@@ -3232,21 +3251,21 @@ customElements.define("swiper-component", SwiperComponent);
 // });
 
 
-      document.addEventListener("DOMContentLoaded", function () {
-        const observer = new MutationObserver(() => {
-          const buttons = document.querySelectorAll("shopify-buy-it-now-button button.shopify-payment-button__button");
-          if (buttons.length > 0) {
-            buttons.forEach((btn) => {
-              btn.textContent = "BUY NOW";
-            });
-            observer.disconnect(); 
-          }
-        });
-
-        observer.observe(document.body, {
-          childList: true,
-          subtree: true
-        });
+document.addEventListener("DOMContentLoaded", function () {
+  const observer = new MutationObserver(() => {
+    const buttons = document.querySelectorAll("shopify-buy-it-now-button button.shopify-payment-button__button");
+    if (buttons.length > 0) {
+      buttons.forEach((btn) => {
+        btn.textContent = "BUY NOW";
       });
-    
+      observer.disconnect();
+    }
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+});
+
 

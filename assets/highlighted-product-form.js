@@ -49,8 +49,18 @@
       config.body = formData;
 
       fetch(`${routes.cart_add_url}`, config)
-        .then(response => response.json())
         .then(response => {
+          if (!response.ok) {
+            console.warn('Cart add failed with status:', response.status, '- falling back to form submission');
+            this.form.setAttribute('method', 'POST');
+            this.form.setAttribute('action', routes.cart_add_url);
+            this.form.submit();
+            return;
+          }
+          return response.json();
+        })
+        .then(response => {
+          if (!response) return;
           if (response.status) {
             this.handleErrorMessage(response.message);
             return;
@@ -68,6 +78,10 @@
         })
         .catch(error => {
           console.error(error);
+          // Fallback to traditional form submission
+          this.form.setAttribute('method', 'POST');
+          this.form.setAttribute('action', routes.cart_add_url);
+          this.form.submit();
         })
         .finally(() => {
           this.submitButton.classList.remove('disabled');

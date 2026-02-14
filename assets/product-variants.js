@@ -525,8 +525,7 @@ if (!customElements.get('product-info')) {
 
       updateURL(url, variantId) {
         this.querySelector("share-button")?.updateUrl(
-          `${window.shopUrl}${url}${
-            variantId ? `?variant=${variantId}` : ""
+          `${window.shopUrl}${url}${variantId ? `?variant=${variantId}` : ""
           }`
         );
 
@@ -805,7 +804,7 @@ if (!customElements.get('product-form')) {
           "submit",
           this.onSubmitHandler.bind(this)
         );
-        this.cart = document.querySelector("cart-notification") || document.querySelector("cart-drawer");
+        this.cart = document.querySelector("cart-notification") || document.querySelector("cart-drawer") || document.querySelector("tulips-cart-drawer");
         this.submitButton = this.querySelector('[type="submit"]');
         this.submitButtonText =
           this.submitButton.querySelector("span");
@@ -849,8 +848,20 @@ if (!customElements.get('product-form')) {
         config.body = formData;
 
         fetch(`${routes.cart_add_url}`, config)
-          .then(response => response.json())
           .then(response => {
+            if (!response.ok) {
+              // Server returned an error (e.g. 401 Unauthorized)
+              // Fall back to traditional form submission
+              console.warn('Cart add failed with status:', response.status, '- falling back to form submission');
+              this.form.setAttribute('method', 'POST');
+              this.form.setAttribute('action', routes.cart_add_url);
+              this.form.submit();
+              return;
+            }
+            return response.json();
+          })
+          .then(response => {
+            if (!response) return; // Early return if we already fell back to form submission
             if (response.status) {
               publish(PUB_SUB_EVENTS.cartError, {
                 source: "product-form",
@@ -882,12 +893,16 @@ if (!customElements.get('product-form')) {
               });
             this.error = false;
             this.cart.renderContents(response);
-            
+
             // Show notification instead of opening cart drawer
             this.showAddToCartNotification();
           })
           .catch(e => {
             console.error(e);
+            // Fallback to traditional form submission
+            this.form.setAttribute('method', 'POST');
+            this.form.setAttribute('action', routes.cart_add_url);
+            this.form.submit();
           })
           .finally(() => {
             this.submitButton.classList.remove("loading");
@@ -946,7 +961,7 @@ if (!customElements.get('product-form')) {
         // Prevent multiple notifications
         if (this._notificationShown) return;
         this._notificationShown = true;
-        
+
         // Create notification
         const notification = document.createElement('div');
         notification.style.cssText = `
@@ -963,10 +978,10 @@ if (!customElements.get('product-form')) {
           animation: slideInRight 0.3s ease-out;
         `;
         notification.textContent = "✅ Product added to cart!";
-        
+
         // Add to page
         document.body.appendChild(notification);
-        
+
         // Remove after 3 seconds and reset flag
         setTimeout(() => {
           notification.remove();
