@@ -273,7 +273,6 @@
     },
     "best_seller_collection_dxdHtJ": {
       "type": "best-seller-collection",
-      "disabled": true,
       "custom_css": [
         "h2 {font-family: \"TheSeasonsLT\", sans-serif;}"
       ],
@@ -291,7 +290,14 @@
           "settings": {
             "title": "",
             "collection": "cotton-buds",
-            "products": [],
+            "products": [
+              "98-water-sensitive-baby-wet-wipe-with-aloe-vera-calendula",
+              "absorbent-cotton-roll-100-gm-in-a-ziplock-bag-1",
+              "absorbent-cotton-roll-50-g-in-a-ziplock-bag",
+              "babywetwipes-grapefruit72wipesstickerpack",
+              "baby-wet-wipes-grapefruit-72-wipes-with-lid",
+              "baby-wet-wipes-peach-fruit-72-wipes-with-lid"
+            ],
             "vendor": "",
             "collection_of_products": "",
             "show_unavailable_products": false
@@ -349,7 +355,6 @@
         "collection_t8WpUE",
         "collection_qRYDQz"
       ],
-      "disabled": true,
       "custom_css": [
         ".product-card__title {font-size: 14px;}",
         ".products-feed__tab button:not(.button--text) {font-size: 14px;}"
