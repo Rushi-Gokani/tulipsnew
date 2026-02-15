@@ -355,6 +355,7 @@
         "collection_t8WpUE",
         "collection_qRYDQz"
       ],
+      "disabled": true,
       "custom_css": [
         ".product-card__title {font-size: 14px;}",
         ".products-feed__tab button:not(.button--text) {font-size: 14px;}"
