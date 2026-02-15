@@ -349,6 +349,7 @@
         "collection_t8WpUE",
         "collection_qRYDQz"
       ],
+      "disabled": true,
       "custom_css": [
         ".product-card__title {font-size: 14px;}",
         ".products-feed__tab button:not(.button--text) {font-size: 14px;}"
@@ -423,6 +424,7 @@
         "collection_qCMeCm",
         "collection_9EBVDb"
       ],
+      "disabled": true,
       "settings": {
         "layout": "layout-2",
         "enable_new_styles": true,
@@ -538,6 +540,7 @@
         "collection_EBYDkF",
         "collection_YDWUgx"
       ],
+      "disabled": true,
       "settings": {
         "layout": "layout-2",
         "enable_new_styles": true,
@@ -583,6 +586,7 @@
       "block_order": [
         "collection_tjJWfN"
       ],
+      "disabled": true,
       "settings": {
         "layout": "layout-2",
         "enable_new_styles": true,
@@ -641,6 +645,7 @@
         "collection_MmdPQ4",
         "collection_EzpkMw"
       ],
+      "disabled": true,
       "settings": {
         "layout": "layout-2",
         "enable_new_styles": true,
@@ -710,6 +715,7 @@
         "collection_NLehtR",
         "collection_VJVt9c"
       ],
+      "disabled": true,
       "settings": {
         "layout": "layout-2",
         "enable_new_styles": true,
