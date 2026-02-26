@@ -25,7 +25,7 @@
       "settings": {
         "footer_wave_image": "shopify://shop_images/wave_800x800_15481d6c-1a98-4358-a159-3ce32b60fda6.svg",
         "footer_logo": "shopify://shop_images/Tullips_logo.webp",
-        "footer_description": "<br>Customer Care: <br><a href=\"mailto:wecare@tulipshygiene.com\">wecare@tulipshygiene.com</a> <br><a href=\"tel:+919555745745\">+91-9555745745</a>.",
+        "footer_description": "<a href=\"mailto:wecare@tulipshygiene.com\">wecare@tulipshygiene.com</a> <br><a href=\"tel:+919555745745\">+91-9555745745</a>.",
         "menu_5_heading": "Customer Care Details",
         "footer_bg_color": "#a4c86e",
         "footer_text_color": "#ffffff",
