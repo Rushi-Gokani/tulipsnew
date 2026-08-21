@@ -13,14 +13,7 @@
   >
     {%- if section.settings.image != blank -%}
       <div class="media media--small newsletter-popup__media">
-        {%- render 'image',
-          image: section.settings.image,
-          image_url_width: 550,
-          alt: section.settings.image.alt | escape,
-          section_index: section.index,
-          loading: 'lazy',
-          fetchpriority: 'low'
-        -%}
+        {%- render 'image', image: section.settings.image, image_url_width: 550, alt: section.settings.image.alt, section_index: section.index, loading: 'lazy', fetchpriority: 'low' -%}
       </div>
     {%- endif -%}
 
@@ -139,3 +132,23 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%- render 'image',
+              image: section.settings.image,
+              image_url_width: 550,
+              alt: section.settings.image.alt | escape,
+              section_index: section.index,
+              loading: 'lazy',
+              fetchpriority: 'low'
+            -%}
+  to: "{%- render 'image', image: section.settings.image, image_url_width: 550, alt:
+    section.settings.image.alt, section_index: section.index, loading: 'lazy', fetchpriority:
+    'low' -%}"
+  position: 699..876
+{% endcomment %}

@@ -113,7 +113,7 @@
                         <div class="card-product-small">
                           <a href="{{ product.url }}" class="card-product-small-media">
                             {%- if product_image != blank -%}
-                              {%- render 'image', image: product_image, alt: product_image.alt | escape -%}
+                              {%- render 'image', image: product_image, alt: product_image.alt -%}
                             {%- else -%}
                               <div class="card-product-small-placeholder">No Image</div>
                             {%- endif -%}
@@ -365,3 +365,14 @@
 
 
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'image', image: product_image, alt: product_image.alt | escape
+    -%}"
+  to: "{%- render 'image', image: product_image, alt: product_image.alt -%}"
+  position: 5835..5903
+{% endcomment %}

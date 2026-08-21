@@ -154,7 +154,7 @@
                         <div class="card header__card header__card-text color-{{ block.settings.color_scheme }} block-{{ block.id }} {{ show_on_class }}">
                           {%- if block.settings.image != blank -%}
                             <div class="media media--overlay card__media media--{{ block.settings.card_media_aspect_ratio }} {% if block.settings.show_image_blur %} card__media--blur{% endif %}">
-                              {%- render 'image', image: block.settings.image, alt: block.settings.image.alt | escape -%}
+                              {%- render 'image', image: block.settings.image, alt: block.settings.image.alt -%}
                             </div>
                           {%- endif -%}
 
@@ -257,12 +257,7 @@
             {%- if section.settings.country_drawer_navigation_menu -%}
               <li class="drawer__subs-item">
                 <tulips-menu-drawer class="drawer">
-                  {%-
-                    render 'country-drawer',
-                    button_class: ' drawer__subs-link',
-                    section: section,
-                    append_id: 'header-drawer-' | append: section.id
-                  -%}
+                  {%- render 'country-drawer', button_class: ' drawer__subs-link', section: section, append_id: 'header-drawer-', append: section.id -%}
                 </tulips-menu-drawer>
               </li>
             {%- endif -%}
@@ -277,3 +272,25 @@
     </div>
   </details>
 </tulips-header-drawer>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'image', image: block.settings.image, alt: block.settings.image.alt
+    | escape -%}"
+  to: "{%- render 'image', image: block.settings.image, alt: block.settings.image.alt
+    -%}"
+  position: 7206..7288
+- from: |-
+    {%-
+                        render 'country-drawer',
+                        button_class: ' drawer__subs-link',
+                        section: section,
+                        append_id: 'header-drawer-' | append: section.id
+                      -%}
+  to: "{%- render 'country-drawer', button_class: ' drawer__subs-link', section: section,
+    append_id: 'header-drawer-', append: section.id -%}"
+  position: 11587..11721
+{% endcomment %}

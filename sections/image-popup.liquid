@@ -56,14 +56,7 @@
       {%- if link_url != blank -%}
         <a href="{{ link_url }}"{% if section.settings.link_new_tab %} target="_blank" rel="noopener"{% endif %}>
       {%- endif -%}
-        {%- render 'image',
-          image: section.settings.image,
-          image_url_width: 1200,
-          alt: section.settings.image.alt | escape,
-          section_index: section.index,
-          loading: 'lazy',
-          fetchpriority: 'low'
-        -%}
+        {%- render 'image', image: section.settings.image, image_url_width: 1200, alt: section.settings.image.alt, section_index: section.index, loading: 'lazy', fetchpriority: 'low' -%}
       {%- if link_url != blank -%}
         </a>
       {%- endif -%}
@@ -163,3 +156,23 @@
 {% endschema %}
 
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%- render 'image',
+              image: section.settings.image,
+              image_url_width: 1200,
+              alt: section.settings.image.alt | escape,
+              section_index: section.index,
+              loading: 'lazy',
+              fetchpriority: 'low'
+            -%}
+  to: "{%- render 'image', image: section.settings.image, image_url_width: 1200, alt:
+    section.settings.image.alt, section_index: section.index, loading: 'lazy', fetchpriority:
+    'low' -%}"
+  position: 1818..1996
+{% endcomment %}

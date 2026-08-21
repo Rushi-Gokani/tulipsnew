@@ -184,7 +184,7 @@
                 {%- if block_link != blank -%}
                   <a href="{{ block_link }}">
                 {%- endif -%}
-                  {%- render 'image', image: block.settings.image, width: 2160, alt: block.settings.image.alt | default: block.settings.heading, loading: desktop_loading, fetchpriority: desktop_fetchpriority -%}
+                  {%- render 'image', image: block.settings.image, width: 2160, alt: block.settings.image.alt, default: block.settings.heading, loading: desktop_loading, fetchpriority: desktop_fetchpriority -%}
                 {%- if block_link != blank -%}
                   </a>
                 {%- endif -%}
@@ -209,7 +209,7 @@
                 {%- if block_link != blank -%}
                   <a href="{{ block_link }}">
                 {%- endif -%}
-                  {%- render 'image', image: block.settings.image_mobile, width: 1080, alt: block.settings.image_mobile.alt | default: block.settings.heading, loading: mobile_loading, fetchpriority: mobile_fetchpriority -%}
+                  {%- render 'image', image: block.settings.image_mobile, width: 1080, alt: block.settings.image_mobile.alt, default: block.settings.heading, loading: mobile_loading, fetchpriority: mobile_fetchpriority -%}
                 {%- if block_link != blank -%}
                   </a>
                 {%- endif -%}
@@ -788,3 +788,24 @@
 {% endschema %}
 
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'image', image: block.settings.image, width: 2160, alt: block.settings.image.alt
+    | default: block.settings.heading, loading: desktop_loading, fetchpriority: desktop_fetchpriority
+    -%}"
+  to: "{%- render 'image', image: block.settings.image, width: 2160, alt: block.settings.image.alt,
+    default: block.settings.heading, loading: desktop_loading, fetchpriority: desktop_fetchpriority
+    -%}"
+  position: 8321..8513
+- from: "{%- render 'image', image: block.settings.image_mobile, width: 1080, alt:
+    block.settings.image_mobile.alt | default: block.settings.heading, loading: mobile_loading,
+    fetchpriority: mobile_fetchpriority -%}"
+  to: "{%- render 'image', image: block.settings.image_mobile, width: 1080, alt: block.settings.image_mobile.alt,
+    default: block.settings.heading, loading: mobile_loading, fetchpriority: mobile_fetchpriority
+    -%}"
+  position: 9863..10067
+{% endcomment %}

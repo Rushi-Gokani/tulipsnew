@@ -212,7 +212,7 @@
                           <div class="card header__card header__card-text color-{{ block.settings.color_scheme }}">
                             {%- if block.settings.image != blank -%}
                             <div class="media media--overlay card__media {% if block.settings.show_image_blur %} card__media--blur{% endif %}">
-                              {%- render 'image', image: block.settings.image, alt: block.settings.image.alt | escape -%}
+                              {%- render 'image', image: block.settings.image, alt: block.settings.image.alt -%}
                             </div>
                             {%- endif -%}
 
@@ -1322,3 +1322,15 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'image', image: block.settings.image, alt: block.settings.image.alt
+    | escape -%}"
+  to: "{%- render 'image', image: block.settings.image, alt: block.settings.image.alt
+    -%}"
+  position: 8214..8296
+{% endcomment %}
